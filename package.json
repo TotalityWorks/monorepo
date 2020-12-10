@@ -9,7 +9,13 @@
   },
   "scripts": {
     "commit": "cz",
-    "prettier": "prettier --write *"
+    "prettier": "prettier --write *",
+    ".:lint": "lerna run lint",
+    ".:lint:fix": "lerna run lint:fix",
+    ".:format": "lerna run format",
+    ".:test": "lerna run test",
+    ".:test:coverage": "lerna run test:coverage",
+    ".:test:watch": "lerna run test:watch"
   },
   "config": {
     "commitizen": {
