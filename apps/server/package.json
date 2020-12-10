@@ -1,0 +1,21 @@
+{
+  "name": "quotesserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "connect-session-knex": "^2.0.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "express-session": "^1.17.1",
+    "graphql": "^15.4.0",
+    "knex": "^0.21.12",
+    "pg": "^8.5.1"
+  }
+}
