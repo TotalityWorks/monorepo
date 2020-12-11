@@ -31,17 +31,40 @@ describe('Basic Server Tests', () => {
       done();
     });
 
-    test('should query users table: return empty array', async (done) => {
-      const result = await knex.select().table('users');
-      expect(result).toEqual([]);
-      done();
+    describe('Users Table', () => {
+      test('should query users table: return empty array', async (done) => {
+        const result = await knex.select().table('users');
+        expect(result).toEqual([]);
+        done();
+      });
+
+      test('should query users table: return seeded users', async (done) => {
+        await knex.seed.run();
+        const users = await knex.select().table('users');
+        expect(users[0].id).toEqual(1);
+        done();
+      });
     });
 
-    test('should query users table: return seeded users', async (done) => {
-      await knex.seed.run();
-      const users = await knex.select().table('users');
-      expect(users[0].id).toEqual(1);
-      done();
+    describe('Quotes Table', () => {
+      beforeAll(async (done) => {
+        await knex.migrate.rollback();
+        await knex.migrate.latest();
+        done();
+      });
+
+      test('should query quotes table: return empty array', async (done) => {
+        const result = await knex.select().table('quotes');
+        expect(result).toEqual([]);
+        done();
+      });
+
+      test('should query quotes table: return seeded quotes', async (done) => {
+        await knex.seed.run();
+        const quotes = await knex.select().table('quotes');
+        expect(quotes[0].id).toEqual(1);
+        done();
+      });
     });
 
     afterAll(async (done) => {
