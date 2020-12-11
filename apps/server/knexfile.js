@@ -3,9 +3,30 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    client: 'pg',
     connection: {
-      filename: './dev.sqlite3',
+      host: 'localhost',
+      database: 'Quotes',
+    },
+    migrations: {
+      directory: `${__dirname}/data/migrations`,
+    },
+    seeds: {
+      directory: `${__dirname}/data/seeds`,
+    },
+  },
+
+  test: {
+    client: 'pg',
+    connection: {
+      host: 'localhost',
+      database: 'QuotesTest',
+    },
+    migrations: {
+      directory: `${__dirname}/data/migrations`,
+    },
+    seeds: {
+      directory: `${__dirname}/data/seeds`,
     },
   },
 
