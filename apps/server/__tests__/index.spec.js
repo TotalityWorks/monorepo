@@ -25,13 +25,13 @@ describe('Basic Server Tests', () => {
   });
 
   describe('should connect to database', () => {
-    beforeAll(async (done) => {
-      await knex.migrate.rollback();
-      await knex.migrate.latest();
-      done();
-    });
-
     describe('Users Table', () => {
+      beforeAll(async (done) => {
+        await knex.migrate.rollback();
+        await knex.migrate.latest();
+        done();
+      });
+
       test('should query users table: return empty array', async (done) => {
         const result = await knex.select().table('users');
         expect(result).toEqual([]);
