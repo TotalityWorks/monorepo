@@ -5,10 +5,12 @@
         "jest/globals": true
     },
     "plugins": [
-        "jest"
+        "jest",
+        "security-node"
     ],
     "extends": [
-        "airbnb-base"
+        "airbnb-base",
+        "plugin:security-node/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": 12,
