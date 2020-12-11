@@ -40,7 +40,7 @@ describe('Basic Server Tests', () => {
     test('should query users table: return seeded users', async (done) => {
       await knex.seed.run();
       const users = await knex.select().table('users');
-      expect(users[0]).toEqual({ id: 1, username: 'mosesintech' });
+      expect(users[0].id).toEqual(1);
       done();
     });
 
