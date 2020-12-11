@@ -1,7 +1,7 @@
 const User = require('../../api/users/usersModel.js');
 const knex = require('../../data/dbConfig.js');
 
-describe('Database Operations', () => {
+describe('User Database Operations', () => {
   beforeAll(async (done) => {
     await knex.migrate.rollback();
     await knex.migrate.latest();
