@@ -14,6 +14,14 @@ describe('Server Tests', () => {
     expect(result.text).toEqual('Server is running.');
     done();
   });
+
+  test('should access graphql endpoint', async (done) => {
+    const result = await request
+      .get('/api/graphql');
+    const { errors } = JSON.parse(result.text);
+    expect(errors[0].message).toEqual('Must provide query string.');
+    done();
+  });
 });
 
 afterAll((done) => {
