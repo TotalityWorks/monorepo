@@ -15,6 +15,9 @@ describe('User Database Operations', () => {
       expect(result).toEqual([{
         id: 1,
         username: 'mosesintech',
+        email: 'moses@totalityworks.com',
+        password: 'password',
+        is_admin: true,
       }]);
       done();
     });
@@ -25,6 +28,9 @@ describe('User Database Operations', () => {
       expect(result).toEqual({
         id: 1,
         username: 'mosesintech',
+        email: 'moses@totalityworks.com',
+        password: 'password',
+        is_admin: true,
       });
       done();
     });
@@ -35,6 +41,9 @@ describe('User Database Operations', () => {
       expect(result).toEqual({
         id: 1,
         username: 'mosesintech',
+        email: 'moses@totalityworks.com',
+        password: 'password',
+        is_admin: true,
       });
       done();
     });
@@ -44,12 +53,21 @@ describe('User Database Operations', () => {
     test('should add a single user', async (done) => {
       const user = {
         username: 'moosh',
+        email: 'mosesintech@gmail.com',
+        password: 'password',
       };
       const result = await User.add(user);
       expect(result).toEqual({
         id: 2,
         username: 'moosh',
+        email: 'mosesintech@gmail.com',
+        password: expect.anything(),
+        is_admin: false,
       });
+      expect(result.password).not.toEqual('password');
+      expect(typeof result.password).toBe('string');
+      expect(result.password).toMatch('$2a$10$');
+      expect(result.password).toContain('$2a$10$');
       done();
     });
   });
@@ -65,11 +83,45 @@ describe('User Database Operations', () => {
       expect(result).not.toEqual({
         id: 1,
         username: 'mosesintech',
+        email: 'moses@totalityworks.com',
+        password: 'password',
+        is_admin: true,
       });
       expect(result).toEqual({
         id: 1,
         username: 'moses',
+        email: 'moses@totalityworks.com',
+        password: 'password',
+        is_admin: true,
       });
+      done();
+    });
+
+    test('should update a single user: Password', async (done) => {
+      const user = {
+        id: 1,
+        password: 'newPass',
+      };
+      const { id } = user;
+      const result = await User.update(id, user);
+      expect(result).not.toEqual({
+        id: 1,
+        username: 'mosesintech',
+        email: 'moses@totalityworks.com',
+        password: 'newPass',
+        is_admin: true,
+      });
+      expect(result).toEqual({
+        id: 1,
+        username: 'moses',
+        email: 'moses@totalityworks.com',
+        password: expect.anything(),
+        is_admin: true,
+      });
+      expect(result.password).not.toEqual('newPass');
+      expect(typeof result.password).toBe('string');
+      expect(result.password).toMatch('$2a$10$');
+      expect(result.password).toContain('$2a$10$');
       done();
     });
   });

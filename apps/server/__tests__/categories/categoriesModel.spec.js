@@ -15,6 +15,7 @@ describe('Categories Database Operations', () => {
       expect(result).toEqual([{
         id: 1,
         name: 'Theology',
+        description: 'The study of God',
       }]);
       done();
     });
@@ -25,6 +26,7 @@ describe('Categories Database Operations', () => {
       expect(result).toEqual({
         id: 1,
         name: 'Theology',
+        description: 'The study of God',
       });
       done();
     });
@@ -34,11 +36,13 @@ describe('Categories Database Operations', () => {
     test('Should add a single category', async (done) => {
       const category = {
         name: 'Prayer',
+        description: 'Communion with God',
       };
       const result = await Categories.add(category);
       expect(result).toEqual({
         id: 2,
         name: 'Prayer',
+        description: 'Communion with God',
       });
       done();
     });
@@ -49,6 +53,7 @@ describe('Categories Database Operations', () => {
       const category = {
         id: 2,
         name: 'Fasting',
+        description: 'The ascetic practice of going without food or modifying your diet.',
       };
       const { id } = category;
       const result = await Categories.update(id, category);
@@ -59,6 +64,7 @@ describe('Categories Database Operations', () => {
       expect(result).toEqual({
         id: 2,
         name: 'Fasting',
+        description: 'The ascetic practice of going without food or modifying your diet.',
       });
       done();
     });

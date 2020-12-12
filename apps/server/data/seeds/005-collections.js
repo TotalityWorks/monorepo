@@ -2,6 +2,10 @@
 exports.seed = function (knex) {
   return knex('collections').del()
     .then(() => knex('collections').insert([
-      { name: 'Favorite Quotes', user_id: '1' },
+      {
+        name: 'Favorite Quotes',
+        description: 'My favorite quotes',
+        user_id: '1',
+      },
     ]));
 };

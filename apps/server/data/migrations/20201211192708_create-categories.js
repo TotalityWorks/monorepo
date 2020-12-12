@@ -3,6 +3,7 @@ exports.up = function (knex) {
   return knex.schema.createTable('categories', (tbl) => {
     tbl.increments();
     tbl.string('name', 30).notNullable().unique();
+    tbl.string('description');
   });
 };
 

@@ -17,6 +17,7 @@ exports.up = function (knex) {
       .inTable('works')
       .onUpdate('CASCADE')
       .onDelete('CASCADE');
+    tbl.string('citation');
   });
 };
 

@@ -10,6 +10,7 @@ exports.up = function (knex) {
       .inTable('users')
       .onUpdate('CASCADE')
       .onDelete('CASCADE');
+    tbl.string('description');
   });
 };
 

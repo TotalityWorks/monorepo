@@ -6,6 +6,7 @@ async function findAll() {
     .select([
       'collections.id',
       'collections.name',
+      'collections.description',
       'collections.user_id',
       db.raw('ARRAY_AGG(quote_collections.quote_id) as quotes'),
     ])
@@ -20,6 +21,7 @@ async function findById(id) {
     .select([
       'collections.id',
       'collections.name',
+      'collections.description',
       'collections.user_id',
       db.raw('ARRAY_AGG(quote_collections.quote_id) as quotes'),
     ])
@@ -36,6 +38,7 @@ async function findByUserId(userId) {
     .select([
       'collections.id',
       'collections.name',
+      'collections.description',
       'collections.user_id',
     ])
     .where({ 'users.id': userId })

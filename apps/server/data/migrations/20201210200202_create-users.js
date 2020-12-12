@@ -2,7 +2,10 @@
 exports.up = function (knex) {
   return knex.schema.createTable('users', (tbl) => {
     tbl.increments();
-    tbl.string('username', 15).notNullable().unique();
+    tbl.string('username').notNullable().unique();
+    tbl.string('email').notNullable().unique();
+    tbl.string('password').notNullable();
+    tbl.boolean('is_admin').notNullable().defaultTo(false);
   });
 };
 

@@ -1,4 +1,5 @@
 const db = require('../../data/dbConfig.js');
+const { hash } = require('../auth/bcrypt.js');
 
 function findAll() {
   return db('users');
@@ -13,12 +14,19 @@ function findByUsername(username) {
 }
 
 async function add(user) {
-  const [id] = await db('users').insert(user, 'id');
+  const hashedUser = await hash(user);
+  const [id] = await db('users').insert(hashedUser, 'id');
   return findById(id);
 }
 
 async function update(id, user) {
-  await db('users').where({ id }).update(user);
+  const { password } = user;
+  if (!password) {
+    await db('users').where({ id }).update(user);
+    return findById(id);
+  }
+  const hashedUser = await hash(user);
+  await db('users').where({ id }).update(hashedUser);
   return findById(id);
 }
 

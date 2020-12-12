@@ -15,6 +15,7 @@ describe('collections Database Operations', () => {
       expect(result).toEqual([{
         id: 1,
         name: 'Favorite Quotes',
+        description: 'My favorite quotes',
         user_id: 1,
         quotes: [
           1,
@@ -30,6 +31,7 @@ describe('collections Database Operations', () => {
         id: 1,
         name: 'Favorite Quotes',
         user_id: 1,
+        description: 'My favorite quotes',
         quotes: [
           1,
         ],
@@ -43,6 +45,7 @@ describe('collections Database Operations', () => {
       expect(result).toEqual([{
         id: 1,
         name: 'Favorite Quotes',
+        description: 'My favorite quotes',
         user_id: 1,
       }]);
       done();
@@ -59,6 +62,7 @@ describe('collections Database Operations', () => {
       expect(result).toEqual({
         id: 2,
         name: 'Cool Quotes',
+        description: null,
         user_id: 1,
         quotes: [
           null,
@@ -72,6 +76,7 @@ describe('collections Database Operations', () => {
       expect(result).toEqual([{
         id: 1,
         name: 'Favorite Quotes',
+        description: 'My favorite quotes',
         user_id: 1,
         quotes: [
           1,
@@ -80,6 +85,7 @@ describe('collections Database Operations', () => {
       {
         id: 2,
         name: 'Cool Quotes',
+        description: null,
         user_id: 1,
         quotes: [
           null,
@@ -95,11 +101,13 @@ describe('collections Database Operations', () => {
         expect(result).toEqual([{
           id: 1,
           name: 'Favorite Quotes',
+          description: 'My favorite quotes',
           user_id: 1,
         },
         {
           id: 2,
           name: 'Cool Quotes',
+          description: null,
           user_id: 1,
         }]);
         done();
@@ -118,6 +126,7 @@ describe('collections Database Operations', () => {
       expect(result).not.toEqual({
         id: 2,
         name: 'Cool Quotes',
+        description: null,
         user_id: 1,
         quotes: [
           null,
@@ -126,6 +135,7 @@ describe('collections Database Operations', () => {
       expect(result).toEqual({
         id: 2,
         name: 'Odd Quotes',
+        description: null,
         user_id: 1,
         quotes: [
           null,

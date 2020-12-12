@@ -2,6 +2,6 @@
 exports.seed = function (knex) {
   return knex('categories').del()
     .then(() => knex('categories').insert([
-      { name: 'Theology' },
+      { name: 'Theology', description: 'The study of God' },
     ]));
 };

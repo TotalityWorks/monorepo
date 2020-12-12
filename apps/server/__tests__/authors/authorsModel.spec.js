@@ -15,6 +15,9 @@ describe('Authors Database Operations', () => {
       expect(result).toEqual([{
         id: 1,
         name: '+ICXC',
+        century: '1st',
+        location: 'Judea',
+        bio: 'The Holy Adored King Jesus Christ, the only begotten Son of God.',
       }]);
       done();
     });
@@ -25,6 +28,9 @@ describe('Authors Database Operations', () => {
       expect(result).toEqual({
         id: 1,
         name: '+ICXC',
+        century: '1st',
+        location: 'Judea',
+        bio: 'The Holy Adored King Jesus Christ, the only begotten Son of God.',
       });
       done();
     });
@@ -39,6 +45,9 @@ describe('Authors Database Operations', () => {
       expect(result).toEqual({
         id: 2,
         name: 'Saint Paul the Apostle',
+        century: null,
+        location: null,
+        bio: null,
       });
       done();
     });
@@ -55,10 +64,16 @@ describe('Authors Database Operations', () => {
       expect(result).not.toEqual({
         id: 2,
         name: 'Saint Paul the Apostle',
+        century: null,
+        location: null,
+        bio: null,
       });
       expect(result).toEqual({
         id: 2,
         name: 'Holy Prophet and Godseer Moses',
+        century: null,
+        location: null,
+        bio: null,
       });
       done();
     });

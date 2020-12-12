@@ -8,6 +8,7 @@ async function findAll() {
       'quotes.text',
       'quotes.author_id',
       'quotes.work_id',
+      'quotes.citation',
       db.raw('ARRAY_AGG(quote_categories.category_id) as categories'),
     ])
     .groupBy('quotes.id')
@@ -23,6 +24,7 @@ async function findById(id) {
       'quotes.text',
       'quotes.author_id',
       'quotes.work_id',
+      'quotes.citation',
       db.raw('ARRAY_AGG(quote_categories.category_id) as categories'),
     ])
     .groupBy('quotes.id', 'quotes.text')
@@ -36,6 +38,7 @@ async function add(quote) {
     text: quote.text,
     author_id: quote.author_id,
     work_id: quote.work_id,
+    citation: quote.citation,
   };
   const [id] = await db('quotes').insert(newQuote, 'id');
 

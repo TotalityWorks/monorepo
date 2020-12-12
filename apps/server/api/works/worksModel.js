@@ -7,6 +7,7 @@ async function findAll() {
       'works.id',
       'works.title',
       'works.author_id',
+      'works.date',
       db.raw('ARRAY_AGG(work_categories.category_id) as categories'),
     ])
     .groupBy('works.id')
@@ -21,6 +22,7 @@ async function findById(id) {
       'works.id',
       'works.title',
       'works.author_id',
+      'works.date',
       db.raw('ARRAY_AGG(work_categories.category_id) as categories'),
     ])
     .groupBy('works.id', 'works.title')

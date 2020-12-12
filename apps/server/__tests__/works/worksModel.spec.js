@@ -16,6 +16,7 @@ describe('works Database Operations', () => {
         id: 1,
         title: 'The Holy Scriptures',
         author_id: 1,
+        date: '1st Century',
         categories: [
           1,
         ],
@@ -30,6 +31,7 @@ describe('works Database Operations', () => {
         id: 1,
         title: 'The Holy Scriptures',
         author_id: 1,
+        date: '1st Century',
         categories: [
           1,
         ],
@@ -52,6 +54,7 @@ describe('works Database Operations', () => {
         id: 2,
         title: 'The New Testament',
         author_id: 1,
+        date: null,
         categories: [
           1,
         ],
@@ -70,6 +73,7 @@ describe('works Database Operations', () => {
         id: 3,
         title: 'The Gospels',
         author_id: 1,
+        date: null,
         categories: [
           null,
         ],
@@ -83,6 +87,7 @@ describe('works Database Operations', () => {
         id: 1,
         title: 'The Holy Scriptures',
         author_id: 1,
+        date: '1st Century',
         categories: [
           1,
         ],
@@ -91,6 +96,7 @@ describe('works Database Operations', () => {
         id: 2,
         title: 'The New Testament',
         author_id: 1,
+        date: null,
         categories: [
           1,
         ],
@@ -99,6 +105,7 @@ describe('works Database Operations', () => {
         id: 3,
         title: 'The Gospels',
         author_id: 1,
+        date: null,
         categories: [
           null,
         ],
@@ -120,6 +127,7 @@ describe('works Database Operations', () => {
         id: 2,
         title: 'The New Testament',
         author_id: 1,
+        date: null,
         categories: [
           1,
         ],
@@ -128,6 +136,7 @@ describe('works Database Operations', () => {
         id: 2,
         title: 'The Old Testament',
         author_id: 1,
+        date: null,
         categories: [
           1,
         ],
