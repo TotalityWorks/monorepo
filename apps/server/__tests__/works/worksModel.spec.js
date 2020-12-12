@@ -16,6 +16,9 @@ describe('works Database Operations', () => {
         id: 1,
         title: 'The Holy Scriptures',
         author_id: 1,
+        categories: [
+          1,
+        ],
       }]);
       done();
     });
@@ -27,23 +30,68 @@ describe('works Database Operations', () => {
         id: 1,
         title: 'The Holy Scriptures',
         author_id: 1,
+        categories: [
+          1,
+        ],
       });
       done();
     });
   });
 
   describe('POST functions', () => {
-    test('Should add a single work', async (done) => {
+    test('Should add a single work: with one category', async (done) => {
       const work = {
         title: 'The New Testament',
         author_id: 1,
+        categories: [
+          1,
+        ],
       };
       const result = await Works.add(work);
       expect(result).toEqual({
         id: 2,
         title: 'The New Testament',
         author_id: 1,
+        categories: [
+          1,
+        ],
       });
+      done();
+    });
+
+    test('Should add a single work: with no category', async (done) => {
+      const work = {
+        title: 'The Gospels',
+        author_id: 1,
+        categories: [],
+      };
+      const result = await Works.add(work);
+      expect(result).toEqual({
+        id: 3,
+        title: 'The Gospels',
+        author_id: 1,
+      });
+      done();
+    });
+
+    test('Should retrieve all works: after adding new work', async (done) => {
+      const result = await Works.findAll();
+      expect(result).toEqual([{
+        id: 1,
+        title: 'The Holy Scriptures',
+        author_id: 1,
+        categories: [
+          1,
+        ],
+      },
+      {
+        id: 2,
+        title: 'The New Testament',
+        author_id: 1,
+        categories: [
+          1,
+        ],
+      }]);
       done();
     });
   });
@@ -61,11 +109,17 @@ describe('works Database Operations', () => {
         id: 2,
         title: 'The New Testament',
         author_id: 1,
+        categories: [
+          1,
+        ],
       });
       expect(result).toEqual({
         id: 2,
         title: 'The Old Testament',
         author_id: 1,
+        categories: [
+          1,
+        ],
       });
       done();
     });
