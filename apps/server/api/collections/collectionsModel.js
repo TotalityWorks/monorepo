@@ -1,16 +1,38 @@
 const db = require('../../data/dbConfig.js');
 
-function findAll() {
-  return db('collections');
+async function findAll() {
+  const collections = await db('collections')
+    .leftOuterJoin('quote_collections', 'collections.id', 'quote_collections.collection_id')
+    .select([
+      'collections.id',
+      'collections.name',
+      'collections.user_id',
+      db.raw('ARRAY_AGG(quote_collections.quote_id) as quotes'),
+    ])
+    .groupBy('collections.id')
+    .orderBy('collections.id', 'asc');
+  return collections;
 }
 
-function findById(id) {
-  return db('collections').where({ id }).first();
+async function findById(id) {
+  const collections = await db('collections')
+    .leftOuterJoin('quote_collections', 'collections.id', 'quote_collections.collection_id')
+    .select([
+      'collections.id',
+      'collections.name',
+      'collections.user_id',
+      db.raw('ARRAY_AGG(quote_collections.quote_id) as quotes'),
+    ])
+    .groupBy('collections.id')
+    .where({ 'collections.id': id })
+    .orderBy('collections.id', 'asc')
+    .first();
+  return collections;
 }
 
 async function findByUserId(userId) {
   const collections = await db('collections')
-    .leftOuterJoin('users', 'collections.id', 'users.id')
+    .leftOuterJoin('users', 'collections.user_id', 'users.id')
     .select([
       'collections.id',
       'collections.name',

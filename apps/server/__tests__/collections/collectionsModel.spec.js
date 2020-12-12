@@ -16,6 +16,9 @@ describe('collections Database Operations', () => {
         id: 1,
         name: 'Favorite Quotes',
         user_id: 1,
+        quotes: [
+          1,
+        ],
       }]);
       done();
     });
@@ -27,6 +30,9 @@ describe('collections Database Operations', () => {
         id: 1,
         name: 'Favorite Quotes',
         user_id: 1,
+        quotes: [
+          1,
+        ],
       });
       done();
     });
@@ -54,9 +60,50 @@ describe('collections Database Operations', () => {
         id: 2,
         name: 'Cool Quotes',
         user_id: 1,
+        quotes: [
+          null,
+        ],
       });
       done();
     });
+
+    test('Should retrieve all collections: after adding new collection', async (done) => {
+      const result = await Collections.findAll();
+      expect(result).toEqual([{
+        id: 1,
+        name: 'Favorite Quotes',
+        user_id: 1,
+        quotes: [
+          1,
+        ],
+      },
+      {
+        id: 2,
+        name: 'Cool Quotes',
+        user_id: 1,
+        quotes: [
+          null,
+        ],
+      }]);
+      done();
+    });
+
+    test('Should retrieve all collections: by User ID, after adding new collection',
+      async (done) => {
+        const userID = 1;
+        const result = await Collections.findByUserId(userID);
+        expect(result).toEqual([{
+          id: 1,
+          name: 'Favorite Quotes',
+          user_id: 1,
+        },
+        {
+          id: 2,
+          name: 'Cool Quotes',
+          user_id: 1,
+        }]);
+        done();
+      });
   });
 
   describe('PUT functions', () => {
@@ -72,11 +119,17 @@ describe('collections Database Operations', () => {
         id: 2,
         name: 'Cool Quotes',
         user_id: 1,
+        quotes: [
+          null,
+        ],
       });
       expect(result).toEqual({
         id: 2,
         name: 'Odd Quotes',
         user_id: 1,
+        quotes: [
+          null,
+        ],
       });
       done();
     });
