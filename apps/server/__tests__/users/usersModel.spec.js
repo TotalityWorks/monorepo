@@ -12,21 +12,30 @@ describe('User Database Operations', () => {
   describe('GET functions', () => {
     test('should retrieve all users', async (done) => {
       const result = await User.findAll();
-      expect(result).toEqual([{ id: 1, username: 'mosesintech' }]);
+      expect(result).toEqual([{
+        id: 1,
+        username: 'mosesintech',
+      }]);
       done();
     });
 
     test('should retrieve a single user: by ID', async (done) => {
       const id = 1;
       const result = await User.findById(id);
-      expect(result).toEqual({ id: 1, username: 'mosesintech' });
+      expect(result).toEqual({
+        id: 1,
+        username: 'mosesintech',
+      });
       done();
     });
 
     test('should retrieve a single user: by Username', async (done) => {
       const username = 'mosesintech';
       const result = await User.findByUsername(username);
-      expect(result).toEqual({ id: 1, username: 'mosesintech' });
+      expect(result).toEqual({
+        id: 1,
+        username: 'mosesintech',
+      });
       done();
     });
   });
@@ -37,7 +46,10 @@ describe('User Database Operations', () => {
         username: 'moosh',
       };
       const result = await User.add(user);
-      expect(result).toEqual({ id: 2, username: 'moosh' });
+      expect(result).toEqual({
+        id: 2,
+        username: 'moosh',
+      });
       done();
     });
   });
@@ -50,8 +62,14 @@ describe('User Database Operations', () => {
       };
       const { id } = user;
       const result = await User.update(id, user);
-      expect(result).not.toEqual({ id: 1, username: 'mosesintech' });
-      expect(result).toEqual({ id: 1, username: 'moses' });
+      expect(result).not.toEqual({
+        id: 1,
+        username: 'mosesintech',
+      });
+      expect(result).toEqual({
+        id: 1,
+        username: 'moses',
+      });
       done();
     });
   });
