@@ -30,6 +30,17 @@ describe('collections Database Operations', () => {
       });
       done();
     });
+
+    test('Should retrieve a single collection: by User ID', async (done) => {
+      const userID = 1;
+      const result = await Collections.findByUserId(userID);
+      expect(result).toEqual([{
+        id: 1,
+        name: 'Favorite Quotes',
+        user_id: 1,
+      }]);
+      done();
+    });
   });
 
   describe('POST functions', () => {

@@ -8,6 +8,20 @@ function findById(id) {
   return db('collections').where({ id }).first();
 }
 
+async function findByUserId(userId) {
+  const collections = await db('collections')
+    .leftOuterJoin('users', 'collections.id', 'users.id')
+    .select([
+      'collections.id',
+      'collections.name',
+      'collections.user_id',
+    ])
+    .where({ 'users.id': userId })
+    .groupBy('collections.id')
+    .orderBy('collections.id', 'asc');
+  return collections;
+}
+
 async function add(collection) {
   const [id] = await db('collections').insert(collection, 'id');
   return findById(id);
@@ -25,6 +39,7 @@ function remove(id) {
 module.exports = {
   findAll,
   findById,
+  findByUserId,
   add,
   update,
   remove,
