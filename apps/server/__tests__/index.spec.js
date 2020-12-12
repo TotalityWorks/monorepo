@@ -46,6 +46,69 @@ describe('Basic Server Tests', () => {
       });
     });
 
+    describe('Authors Table', () => {
+      beforeAll(async (done) => {
+        await knex.migrate.rollback();
+        await knex.migrate.latest();
+        done();
+      });
+
+      test('should query authors table: return empty array', async (done) => {
+        const result = await knex.select().table('authors');
+        expect(result).toEqual([]);
+        done();
+      });
+
+      test('should query authors table: return seeded authors', async (done) => {
+        await knex.seed.run();
+        const authors = await knex.select().table('authors');
+        expect(authors[0].id).toEqual(1);
+        done();
+      });
+    });
+
+    describe('Categories Table', () => {
+      beforeAll(async (done) => {
+        await knex.migrate.rollback();
+        await knex.migrate.latest();
+        done();
+      });
+
+      test('should query categories table: return empty array', async (done) => {
+        const result = await knex.select().table('categories');
+        expect(result).toEqual([]);
+        done();
+      });
+
+      test('should query categories table: return seeded categories', async (done) => {
+        await knex.seed.run();
+        const categories = await knex.select().table('categories');
+        expect(categories[0].id).toEqual(1);
+        done();
+      });
+    });
+
+    describe('Works Table', () => {
+      beforeAll(async (done) => {
+        await knex.migrate.rollback();
+        await knex.migrate.latest();
+        done();
+      });
+
+      test('should query works table: return empty array', async (done) => {
+        const result = await knex.select().table('categories');
+        expect(result).toEqual([]);
+        done();
+      });
+
+      test('should query works table: return seeded works', async (done) => {
+        await knex.seed.run();
+        const works = await knex.select().table('works');
+        expect(works[0].id).toEqual(1);
+        done();
+      });
+    });
+
     describe('Quotes Table', () => {
       beforeAll(async (done) => {
         await knex.migrate.rollback();
@@ -64,6 +127,98 @@ describe('Basic Server Tests', () => {
         const quotes = await knex.select().table('quotes');
         expect(quotes[0].id).toEqual(1);
         done();
+      });
+    });
+
+    describe('Collections Table', () => {
+      beforeAll(async (done) => {
+        await knex.migrate.rollback();
+        await knex.migrate.latest();
+        done();
+      });
+
+      test('should query collections table: return empty array', async (done) => {
+        const result = await knex.select().table('collections');
+        expect(result).toEqual([]);
+        done();
+      });
+
+      test('should query collections table: return seeded collections', async (done) => {
+        await knex.seed.run();
+        const collections = await knex.select().table('collections');
+        expect(collections[0].id).toEqual(1);
+        done();
+      });
+    });
+
+    describe('Many-to-Many Tables', () => {
+      beforeAll(async (done) => {
+        await knex.migrate.rollback();
+        await knex.migrate.latest();
+        done();
+      });
+
+      describe('Work_Categories Table', () => {
+        beforeAll(async (done) => {
+          await knex.migrate.rollback();
+          await knex.migrate.latest();
+          done();
+        });
+
+        test('should query work_categories table: return empty array', async (done) => {
+          const result = await knex.select().table('work_categories');
+          expect(result).toEqual([]);
+          done();
+        });
+
+        test('should query work_categories table: return seeded work_categories', async (done) => {
+          await knex.seed.run();
+          const workCategories = await knex.select().table('work_categories');
+          expect(workCategories[0].id).toEqual(1);
+          done();
+        });
+      });
+
+      describe('Quote_Categories Table', () => {
+        beforeAll(async (done) => {
+          await knex.migrate.rollback();
+          await knex.migrate.latest();
+          done();
+        });
+
+        test('should query quote_categories table: return empty array', async (done) => {
+          const result = await knex.select().table('quote_categories');
+          expect(result).toEqual([]);
+          done();
+        });
+
+        test('should query quote_categories table: return seeded quote_categories', async (done) => {
+          await knex.seed.run();
+          const quoteCategories = await knex.select().table('quote_categories');
+          expect(quoteCategories[0].id).toEqual(1);
+          done();
+        });
+      });
+
+      describe('Quote_Collections Table', () => {
+        beforeAll(async (done) => {
+          await knex.migrate.rollback();
+          await knex.migrate.latest();
+          done();
+        });
+
+        test('should query quote_collections table: return empty array', async (done) => {
+          const result = await knex.select().table('quote_collections');
+          expect(result).toEqual([]);
+          done();
+        });
+
+        test('should query quote_collections table: return seeded quote_collections', async (done) => {
+          await knex.seed.run();
+          const quoteCollections = await knex.select().table('quote_collections');
+          expect(quoteCollections[0].id).toEqual(1);
+          done();
+        });
       });
     });
 
