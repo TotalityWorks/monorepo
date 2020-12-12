@@ -1,15 +1,55 @@
 const db = require('../../data/dbConfig.js');
 
-function findAll() {
-  return db('quotes');
+async function findAll() {
+  const quotes = await db('quotes')
+    .leftOuterJoin('quote_categories', 'quotes.id', 'quote_categories.quote_id')
+    .select([
+      'quotes.id',
+      'quotes.text',
+      'quotes.author_id',
+      'quotes.work_id',
+      db.raw('ARRAY_AGG(quote_categories.category_id) as categories'),
+    ])
+    .groupBy('quotes.id')
+    .orderBy('quotes.id', 'asc');
+  return quotes;
 }
 
-function findById(id) {
-  return db('quotes').where({ id }).first();
+async function findById(id) {
+  const quotes = await db('quotes')
+    .leftOuterJoin('quote_categories', 'quotes.id', 'quote_categories.quote_id')
+    .select([
+      'quotes.id',
+      'quotes.text',
+      'quotes.author_id',
+      'quotes.work_id',
+      db.raw('ARRAY_AGG(quote_categories.category_id) as categories'),
+    ])
+    .groupBy('quotes.id', 'quotes.text')
+    .where({ 'quotes.id': id })
+    .first();
+  return quotes;
 }
 
 async function add(quote) {
-  const [id] = await db('quotes').insert(quote, 'id');
+  const newQuote = {
+    text: quote.text,
+    author_id: quote.author_id,
+    work_id: quote.work_id,
+  };
+  const [id] = await db('quotes').insert(newQuote, 'id');
+
+  if (quote.categories.length > 0) {
+    const { categories } = quote;
+    categories.forEach(async (cat) => {
+      const quoteCategories = {
+        quote_id: id,
+        category_id: cat,
+      };
+      await db('quote_categories').insert(quoteCategories);
+    });
+  }
+
   return findById(id);
 }
 
