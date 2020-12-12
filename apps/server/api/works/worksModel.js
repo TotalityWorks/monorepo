@@ -2,20 +2,21 @@ const db = require('../../data/dbConfig.js');
 
 async function findAll() {
   const works = await db('works')
-    .innerJoin('work_categories', 'works.id', 'work_categories.work_id')
+    .leftOuterJoin('work_categories', 'works.id', 'work_categories.work_id')
     .select([
       'works.id',
       'works.title',
       'works.author_id',
       db.raw('ARRAY_AGG(work_categories.category_id) as categories'),
     ])
-    .groupBy('works.id', 'works.title');
+    .groupBy('works.id')
+    .orderBy('works.id', 'asc');
   return works;
 }
 
 async function findById(id) {
   const works = await db('works')
-    .innerJoin('work_categories', 'works.id', 'work_categories.work_id')
+    .leftOuterJoin('work_categories', 'works.id', 'work_categories.work_id')
     .select([
       'works.id',
       'works.title',
@@ -44,10 +45,9 @@ async function add(work) {
       };
       await db('work_categories').insert(workCategories);
     });
-    return findById(id);
   }
 
-  return db('works').where({ id }).first();
+  return findById(id);
 }
 
 async function update(id, changes) {

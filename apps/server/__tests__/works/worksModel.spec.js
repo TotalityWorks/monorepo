@@ -70,6 +70,9 @@ describe('works Database Operations', () => {
         id: 3,
         title: 'The Gospels',
         author_id: 1,
+        categories: [
+          null,
+        ],
       });
       done();
     });
@@ -90,6 +93,14 @@ describe('works Database Operations', () => {
         author_id: 1,
         categories: [
           1,
+        ],
+      },
+      {
+        id: 3,
+        title: 'The Gospels',
+        author_id: 1,
+        categories: [
+          null,
         ],
       }]);
       done();
