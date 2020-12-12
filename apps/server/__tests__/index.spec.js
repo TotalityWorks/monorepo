@@ -18,7 +18,7 @@ describe('Basic Server Tests', () => {
 
   test('should access graphql endpoint', async (done) => {
     const result = await request
-      .get('/api/graphql');
+      .get('/graphql');
     const { errors } = JSON.parse(result.text);
     expect(errors[0].message).toEqual('Must provide query string.');
     done();

@@ -15,7 +15,7 @@ server.get('/', (req, res) => {
   res.send('Server is running.');
 });
 
-server.use('/api/graphql', (req, res) => {
+server.use('/graphql', (req, res) => {
   graphqlHTTP({
     schema,
     graphiql: dev,
