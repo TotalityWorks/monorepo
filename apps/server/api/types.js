@@ -16,6 +16,16 @@ const authorType = new GraphQLObjectType({
   }),
 });
 
+const categoryType = new GraphQLObjectType({
+  name: 'Category',
+  fields: () => ({
+    id: { type: new GraphQLNonNull(GraphQLID) },
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    description: { type: GraphQLString },
+  }),
+});
+
 module.exports = {
   authorType,
+  categoryType,
 };
