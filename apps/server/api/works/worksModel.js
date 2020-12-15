@@ -43,6 +43,20 @@ async function findByAuthorId(id) {
   return works;
 }
 
+async function findByCategoryId(id) {
+  const works = await db('works')
+    .leftOuterJoin('work_categories', 'works.id', 'work_categories.work_id')
+    .select([
+      'works.id',
+      'works.title',
+      'works.author_id',
+      'works.date',
+    ])
+    .groupBy('works.id')
+    .where({ 'work_categories.category_id': id });
+  return works;
+}
+
 async function add(work) {
   const newWork = {
     title: work.title,
@@ -78,6 +92,7 @@ module.exports = {
   findById,
   findByQuoteId,
   findByAuthorId,
+  findByCategoryId,
   add,
   update,
   remove,

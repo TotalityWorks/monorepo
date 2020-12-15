@@ -38,6 +38,21 @@ async function findByAuthorId(id) {
   return quotes;
 }
 
+async function findByCategoryId(id) {
+  const quotes = await db('quotes')
+    .leftOuterJoin('quote_categories', 'quotes.id', 'quote_categories.quote_id')
+    .select([
+      'quotes.id',
+      'quotes.text',
+      'quotes.citation',
+      'quotes.author_id',
+      'quotes.work_id',
+    ])
+    .groupBy('quotes.id')
+    .where({ 'quote_categories.category_id': id });
+  return quotes;
+}
+
 async function add(quote) {
   const newQuote = {
     text: quote.text,
@@ -74,6 +89,7 @@ module.exports = {
   findAll,
   findById,
   findByAuthorId,
+  findByCategoryId,
   add,
   update,
   remove,

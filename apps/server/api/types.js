@@ -42,6 +42,18 @@ const categoryType = new GraphQLObjectType({
     id: { type: new GraphQLNonNull(GraphQLID) },
     name: { type: new GraphQLNonNull(GraphQLString) },
     description: { type: GraphQLString },
+    works: {
+      type: new GraphQLList(workType),
+      resolve(parent) {
+        return Work.findByCategoryId(parent.id);
+      },
+    },
+    quotes: {
+      type: new GraphQLList(quoteType),
+      resolve(parent) {
+        return Quote.findByCategoryId(parent.id);
+      },
+    },
   }),
 });
 
@@ -50,13 +62,13 @@ const workType = new GraphQLObjectType({
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLID) },
     title: { type: new GraphQLNonNull(GraphQLString) },
+    date: { type: GraphQLString },
     author: {
       type: authorType,
       resolve(parents) {
         return Author.findByWorkId(parents.id);
       },
     },
-    date: { type: GraphQLString },
   }),
 });
 

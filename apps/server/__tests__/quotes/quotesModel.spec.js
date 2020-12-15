@@ -53,6 +53,19 @@ describe('Quotes Database Operations', () => {
       }]);
       done();
     });
+
+    test('Should retrieve an array of quotes: by category ID', async (done) => {
+      const id = 1;
+      const result = await Quotes.findByCategoryId(id);
+      expect(result).toEqual([{
+        id: 1,
+        text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
+        author_id: 1,
+        work_id: 1,
+        citation: 'John 3:16',
+      }]);
+      done();
+    });
   });
 
   describe('POST functions', () => {

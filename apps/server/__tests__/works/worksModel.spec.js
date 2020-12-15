@@ -96,7 +96,7 @@ describe('works Database Operations', () => {
       done();
     });
 
-    test('Should add all works: by author ID', async (done) => {
+    test('Should find all works: by author ID', async (done) => {
       const id = 1;
       const result = await Works.findByAuthorId(id);
       expect(result).toEqual([{
@@ -114,6 +114,24 @@ describe('works Database Operations', () => {
       {
         id: 3,
         title: 'The Gospels',
+        author_id: 1,
+        date: null,
+      }]);
+      done();
+    });
+
+    test('Should find all works: by category ID', async (done) => {
+      const id = 1;
+      const result = await Works.findByCategoryId(id);
+      expect(result).toEqual([{
+        id: 1,
+        title: 'The Holy Scriptures',
+        author_id: 1,
+        date: '1st Century',
+      },
+      {
+        id: 2,
+        title: 'The New Testament',
         author_id: 1,
         date: null,
       }]);
