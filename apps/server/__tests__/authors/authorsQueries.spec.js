@@ -22,9 +22,23 @@ describe('Author Queries', () => {
       done();
     });
 
-    test('should return a single author', async (done) => {
+    test('should return a single author: by ID', async (done) => {
       const parent = null;
       const args = { id: 1 };
+      const result = await getAuthor.resolve(parent, args);
+      expect(result).toEqual({
+        id: 1,
+        name: '+ICXC',
+        century: '1st',
+        location: 'Judea',
+        bio: 'The Holy Adored King Jesus Christ, the only begotten Son of God.',
+      });
+      done();
+    });
+
+    test('should return a single author: by name', async (done) => {
+      const parent = null;
+      const args = { name: '+ICXC' };
       const result = await getAuthor.resolve(parent, args);
       expect(result).toEqual({
         id: 1,

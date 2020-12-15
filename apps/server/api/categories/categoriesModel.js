@@ -4,6 +4,10 @@ function findAll() {
   return db('categories');
 }
 
+function findBy(param) {
+  return db('categories').where(param);
+}
+
 function findById(id) {
   return db('categories').where({ id }).first();
 }
@@ -37,6 +41,7 @@ function remove(id) {
 
 module.exports = {
   findAll,
+  findBy,
   findById,
   findByQuoteId,
   add,

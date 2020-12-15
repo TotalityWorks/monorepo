@@ -11,6 +11,9 @@ module.exports = {
     location: { type: GraphQLString },
   },
   resolve(parent, args) {
+    if (!args.id) {
+      return Author.findBy(args).first();
+    }
     return Author.findById(args.id);
   },
 };
