@@ -46,19 +46,8 @@ async function findQuotes(collectionID) {
   return collection;
 }
 
-async function findByUserId(userId) {
-  const collections = await db('collections')
-    .leftOuterJoin('users', 'collections.user_id', 'users.id')
-    .select([
-      'collections.id',
-      'collections.name',
-      'collections.description',
-      'collections.user_id',
-    ])
-    .where({ 'users.id': userId })
-    .groupBy('collections.id')
-    .orderBy('collections.id', 'asc');
-  return collections;
+function findByUserId(userId) {
+  return db('collections').where({ 'collections.user_id': userId });
 }
 
 async function add(collection) {

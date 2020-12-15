@@ -114,6 +114,12 @@ const userType = new GraphQLObjectType({
     email: { type: new GraphQLNonNull(GraphQLString) },
     password: { type: new GraphQLNonNull(GraphQLString) },
     is_admin: { type: new GraphQLNonNull(GraphQLBoolean) },
+    collections: {
+      type: new GraphQLList(collectionType),
+      resolve(parent) {
+        return Collection.findByUserId(parent.id);
+      },
+    },
   }),
 });
 
