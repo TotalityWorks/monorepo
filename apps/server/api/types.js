@@ -3,6 +3,7 @@ const {
   GraphQLID,
   GraphQLNonNull,
   GraphQLString,
+  GraphQLBoolean,
 } = require('graphql');
 const Author = require('./authors/authorsModel.js');
 const Work = require('./works/worksModel.js');
@@ -63,9 +64,21 @@ const quoteType = new GraphQLObjectType({
   }),
 });
 
+const userType = new GraphQLObjectType({
+  name: 'User',
+  fields: () => ({
+    id: { type: new GraphQLNonNull(GraphQLID) },
+    username: { type: new GraphQLNonNull(GraphQLString) },
+    email: { type: new GraphQLNonNull(GraphQLString) },
+    password: { type: new GraphQLNonNull(GraphQLString) },
+    is_admin: { type: new GraphQLNonNull(GraphQLBoolean) },
+  }),
+});
+
 module.exports = {
   authorType,
   categoryType,
   workType,
   quoteType,
+  userType,
 };
