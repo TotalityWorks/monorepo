@@ -96,6 +96,30 @@ describe('works Database Operations', () => {
       done();
     });
 
+    test('Should add all works: by author ID', async (done) => {
+      const id = 1;
+      const result = await Works.findByAuthorId(id);
+      expect(result).toEqual([{
+        id: 1,
+        title: 'The Holy Scriptures',
+        author_id: 1,
+        date: '1st Century',
+      },
+      {
+        id: 2,
+        title: 'The New Testament',
+        author_id: 1,
+        date: null,
+      },
+      {
+        id: 3,
+        title: 'The Gospels',
+        author_id: 1,
+        date: null,
+      }]);
+      done();
+    });
+
     test('Should retrieve all works: after adding new work', async (done) => {
       const result = await Works.findAll();
       expect(result).toEqual([{

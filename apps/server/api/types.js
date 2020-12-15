@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 const {
   GraphQLObjectType,
   GraphQLID,
@@ -8,6 +9,7 @@ const {
 } = require('graphql');
 const Author = require('./authors/authorsModel.js');
 const Work = require('./works/worksModel.js');
+const Quote = require('./quotes/quotesModel.js');
 const User = require('./users/usersModel.js');
 const Collection = require('./collections/collectionsModel.js');
 
@@ -19,6 +21,18 @@ const authorType = new GraphQLObjectType({
     century: { type: GraphQLString },
     location: { type: GraphQLString },
     bio: { type: GraphQLString },
+    works: {
+      type: new GraphQLList(workType),
+      resolve(parent) {
+        return Work.findByAuthorId(parent.id);
+      },
+    },
+    quotes: {
+      type: new GraphQLList(quoteType),
+      resolve(parent) {
+        return Quote.findByAuthorId(parent.id);
+      },
+    },
   }),
 });
 
