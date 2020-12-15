@@ -30,6 +30,17 @@ describe('Categories Database Operations', () => {
       });
       done();
     });
+
+    test('Should retrieve a single category: by quote ID', async (done) => {
+      const id = 1;
+      const result = await Categories.findByQuoteId(id);
+      expect(result).toEqual([{
+        id: 1,
+        name: 'Theology',
+        description: 'The study of God',
+      }]);
+      done();
+    });
   });
 
   describe('POST functions', () => {

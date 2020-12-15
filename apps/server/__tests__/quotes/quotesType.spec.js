@@ -1,6 +1,11 @@
 const graphql = require('graphql');
 const knex = require('../../data/dbConfig.js');
-const { quoteType, authorType, workType } = require('../../api/types.js');
+const {
+  quoteType,
+  authorType,
+  workType,
+  categoryType,
+} = require('../../api/types.js');
 
 describe('Quote GraphQL Type', () => {
   test('should verify that the fields are correct', async (done) => {
@@ -17,6 +22,8 @@ describe('Quote GraphQL Type', () => {
     expect(fields.author.type).toMatchObject(authorType);
     expect(fields).toHaveProperty('work');
     expect(fields.work.type).toMatchObject(workType);
+    expect(fields).toHaveProperty('categories');
+    expect(fields.categories.type).toMatchObject(categoryType);
     done();
   });
 
@@ -57,6 +64,19 @@ describe('Quote GraphQL Type', () => {
           1,
         ],
       });
+      done();
+    });
+
+    test('should return an array of categories from resolver function', async (done) => {
+      const parentId = { id: 1 };
+      const args = null;
+      const fields = quoteType.getFields();
+      const result = await fields.categories.resolve(parentId, args);
+      expect(result).toEqual([{
+        id: 1,
+        name: 'Theology',
+        description: 'The study of God',
+      }]);
       done();
     });
 

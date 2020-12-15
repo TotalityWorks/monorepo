@@ -11,6 +11,7 @@ const Author = require('./authors/authorsModel.js');
 const Work = require('./works/worksModel.js');
 const Quote = require('./quotes/quotesModel.js');
 const User = require('./users/usersModel.js');
+const Categories = require('./categories/categoriesModel.js');
 const Collection = require('./collections/collectionsModel.js');
 
 const authorType = new GraphQLObjectType({
@@ -94,6 +95,12 @@ const quoteType = new GraphQLObjectType({
       type: workType,
       resolve(parent) {
         return Work.findByQuoteId(parent.id);
+      },
+    },
+    categories: {
+      type: categoryType,
+      resolve(parent) {
+        return Categories.findByQuoteId(parent.id);
       },
     },
   }),
