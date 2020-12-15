@@ -15,6 +15,13 @@ async function findByWorkId(id) {
   return author;
 }
 
+async function findByQuoteId(id) {
+  const work = await db('quotes').where({ id }).first();
+  const authorID = work.author_id;
+  const author = await findById(authorID);
+  return author;
+}
+
 async function add(author) {
   const [id] = await db('authors').insert(author, 'id');
   return findById(id);
@@ -33,6 +40,7 @@ module.exports = {
   findAll,
   findById,
   findByWorkId,
+  findByQuoteId,
   add,
   update,
   remove,

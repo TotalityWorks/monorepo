@@ -31,6 +31,13 @@ async function findById(id) {
   return works;
 }
 
+async function findByQuoteId(id) {
+  const quote = await db('quotes').where({ id }).first();
+  const workID = quote.work_id;
+  const work = await findById(workID);
+  return work;
+}
+
 async function add(work) {
   const newWork = {
     title: work.title,
@@ -64,6 +71,7 @@ function remove(id) {
 module.exports = {
   findAll,
   findById,
+  findByQuoteId,
   add,
   update,
   remove,

@@ -38,6 +38,21 @@ describe('works Database Operations', () => {
       });
       done();
     });
+
+    test('Should retrieve a single author: by Quote ID', async (done) => {
+      const id = 1;
+      const result = await Works.findByQuoteId(id);
+      expect(result).toEqual({
+        id: 1,
+        title: 'The Holy Scriptures',
+        author_id: 1,
+        date: '1st Century',
+        categories: [
+          1,
+        ],
+      });
+      done();
+    });
   });
 
   describe('POST functions', () => {

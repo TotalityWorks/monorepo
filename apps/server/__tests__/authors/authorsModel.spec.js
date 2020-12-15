@@ -47,6 +47,19 @@ describe('Authors Database Operations', () => {
       });
       done();
     });
+
+    test('Should retrieve a single author: by Quote ID', async (done) => {
+      const id = 1;
+      const result = await Authors.findByQuoteId(id);
+      expect(result).toEqual({
+        id: 1,
+        name: '+ICXC',
+        century: '1st',
+        location: 'Judea',
+        bio: 'The Holy Adored King Jesus Christ, the only begotten Son of God.',
+      });
+      done();
+    });
   });
 
   describe('POST functions', () => {
