@@ -10,6 +10,8 @@
   "scripts": {
     "commit": "cz",
     "prettier": "prettier --write *",
+    "dev:start": "npm i && npm run .:dev:setup",
+    ".:dev:setup": "lerna run dev:setup",
     ".:lint": "lerna run lint",
     ".:lint:fix": "lerna run lint:fix",
     ".:format": "lerna run format",
