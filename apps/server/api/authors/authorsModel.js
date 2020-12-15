@@ -8,6 +8,13 @@ function findById(id) {
   return db('authors').where({ id }).first();
 }
 
+async function findByWorkId(id) {
+  const work = await db('works').where({ id }).first();
+  const authorID = work.author_id;
+  const author = await db('authors').where({ id: authorID }).first();
+  return author;
+}
+
 async function add(author) {
   const [id] = await db('authors').insert(author, 'id');
   return findById(id);
@@ -25,6 +32,7 @@ function remove(id) {
 module.exports = {
   findAll,
   findById,
+  findByWorkId,
   add,
   update,
   remove,

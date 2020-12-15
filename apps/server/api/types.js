@@ -4,6 +4,7 @@ const {
   GraphQLNonNull,
   GraphQLString,
 } = require('graphql');
+const Author = require('./authors/authorsModel.js');
 
 const authorType = new GraphQLObjectType({
   name: 'Author',
@@ -25,7 +26,23 @@ const categoryType = new GraphQLObjectType({
   }),
 });
 
+const workType = new GraphQLObjectType({
+  name: 'Work',
+  fields: () => ({
+    id: { type: new GraphQLNonNull(GraphQLID) },
+    title: { type: new GraphQLNonNull(GraphQLString) },
+    author: {
+      type: authorType,
+      resolve(parents) {
+        return Author.findByWorkId(parents.id);
+      },
+    },
+    date: { type: GraphQLString },
+  }),
+});
+
 module.exports = {
   authorType,
   categoryType,
+  workType,
 };
