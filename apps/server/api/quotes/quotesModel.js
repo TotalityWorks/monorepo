@@ -33,6 +33,11 @@ async function findById(id) {
   return quotes;
 }
 
+async function findByWorkId(id) {
+  const quotes = await db('quotes').where({ work_id: id });
+  return quotes;
+}
+
 async function findByAuthorId(id) {
   const quotes = await db('quotes').where({ author_id: id });
   return quotes;
@@ -88,6 +93,7 @@ function remove(id) {
 module.exports = {
   findAll,
   findById,
+  findByWorkId,
   findByAuthorId,
   findByCategoryId,
   add,

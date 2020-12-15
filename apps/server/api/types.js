@@ -69,6 +69,12 @@ const workType = new GraphQLObjectType({
         return Author.findByWorkId(parents.id);
       },
     },
+    quotes: {
+      type: new GraphQLList(quoteType),
+      resolve(parent) {
+        return Quote.findByWorkId(parent.id);
+      },
+    },
   }),
 });
 
