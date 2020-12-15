@@ -4,6 +4,10 @@ function findAll() {
   return db('authors');
 }
 
+function findBy(param) {
+  return db('authors').where(param);
+}
+
 function findById(id) {
   return db('authors').where({ id }).first();
 }
@@ -38,6 +42,7 @@ function remove(id) {
 
 module.exports = {
   findAll,
+  findBy,
   findById,
   findByWorkId,
   findByQuoteId,

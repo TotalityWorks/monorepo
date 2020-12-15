@@ -22,6 +22,32 @@ describe('Authors Database Operations', () => {
       done();
     });
 
+    test('Should retrieve all authors with the same parameter: century', async (done) => {
+      const century = { century: '1st' };
+      const result = await Authors.findBy(century);
+      expect(result).toEqual([{
+        id: 1,
+        name: '+ICXC',
+        century: '1st',
+        location: 'Judea',
+        bio: 'The Holy Adored King Jesus Christ, the only begotten Son of God.',
+      }]);
+      done();
+    });
+
+    test('Should retrieve all authors with the same parameter: location', async (done) => {
+      const location = { location: 'Judea' };
+      const result = await Authors.findBy(location);
+      expect(result).toEqual([{
+        id: 1,
+        name: '+ICXC',
+        century: '1st',
+        location: 'Judea',
+        bio: 'The Holy Adored King Jesus Christ, the only begotten Son of God.',
+      }]);
+      done();
+    });
+
     test('Should retrieve a single author: by ID', async (done) => {
       const id = 1;
       const result = await Authors.findById(id);
