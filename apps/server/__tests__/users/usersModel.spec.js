@@ -47,6 +47,19 @@ describe('User Database Operations', () => {
       });
       done();
     });
+
+    test('should retrieve a single user: by Collection ID', async (done) => {
+      const id = 1;
+      const result = await User.findByCollectionId(id);
+      expect(result).toEqual({
+        id: 1,
+        username: 'mosesintech',
+        email: 'moses@totalityworks.com',
+        password: 'password',
+        is_admin: true,
+      });
+      done();
+    });
   });
 
   describe('POST functions', () => {

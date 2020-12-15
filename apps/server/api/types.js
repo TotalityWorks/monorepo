@@ -4,9 +4,12 @@ const {
   GraphQLNonNull,
   GraphQLString,
   GraphQLBoolean,
+  GraphQLList,
 } = require('graphql');
 const Author = require('./authors/authorsModel.js');
 const Work = require('./works/worksModel.js');
+const User = require('./users/usersModel.js');
+const Collection = require('./collections/collectionsModel.js');
 
 const authorType = new GraphQLObjectType({
   name: 'Author',
@@ -75,10 +78,32 @@ const userType = new GraphQLObjectType({
   }),
 });
 
+const collectionType = new GraphQLObjectType({
+  name: 'Collection',
+  fields: () => ({
+    id: { type: new GraphQLNonNull(GraphQLID) },
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    description: { type: GraphQLString },
+    user: {
+      type: userType,
+      resolve(parent) {
+        return User.findByCollectionId(parent.id);
+      },
+    },
+    quotes: {
+      type: new GraphQLList(quoteType),
+      resolve(parent) {
+        return Collection.findQuotes(parent.id);
+      },
+    },
+  }),
+});
+
 module.exports = {
   authorType,
   categoryType,
   workType,
   quoteType,
   userType,
+  collectionType,
 };

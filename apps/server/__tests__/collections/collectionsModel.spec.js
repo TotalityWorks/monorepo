@@ -36,6 +36,20 @@ describe('collections Database Operations', () => {
           1,
         ],
       });
+      expect(result.quotes).toEqual([1]);
+      done();
+    });
+
+    test('Should return an array of quotes from collection ID', async (done) => {
+      const id = 1;
+      const result = await Collections.findQuotes(id);
+      expect(result).toEqual([{
+        id: 1,
+        text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
+        author_id: 1,
+        work_id: 1,
+        citation: 'John 3:16',
+      }]);
       done();
     });
 

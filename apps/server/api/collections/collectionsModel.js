@@ -32,6 +32,20 @@ async function findById(id) {
   return collections;
 }
 
+async function findQuotes(collectionID) {
+  const collection = await db('quote_collections')
+    .leftOuterJoin('quotes', 'quote_collections.quote_id', 'quotes.id')
+    .select([
+      'quotes.id',
+      'quotes.text',
+      'quotes.citation',
+      'quotes.author_id',
+      'quotes.work_id',
+    ])
+    .where({ 'quote_collections.collection_id': collectionID });
+  return collection;
+}
+
 async function findByUserId(userId) {
   const collections = await db('collections')
     .leftOuterJoin('users', 'collections.user_id', 'users.id')
@@ -65,6 +79,7 @@ module.exports = {
   findAll,
   findById,
   findByUserId,
+  findQuotes,
   add,
   update,
   remove,

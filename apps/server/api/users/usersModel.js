@@ -13,6 +13,13 @@ function findByUsername(username) {
   return db('users').where({ username }).first();
 }
 
+async function findByCollectionId(id) {
+  const collection = await db('collections').where({ id }).first();
+  const userID = collection.user_id;
+  const user = await findById(userID);
+  return user;
+}
+
 async function add(user) {
   const hashedUser = await hash(user);
   const [id] = await db('users').insert(hashedUser, 'id');
@@ -38,6 +45,7 @@ module.exports = {
   findAll,
   findById,
   findByUsername,
+  findByCollectionId,
   add,
   update,
   remove,
