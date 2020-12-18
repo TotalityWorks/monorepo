@@ -31,6 +31,37 @@ async function findById(id) {
   return works;
 }
 
+async function findByDate(date) {
+  const works = await db('works')
+    .leftOuterJoin('work_categories', 'works.id', 'work_categories.work_id')
+    .select([
+      'works.id',
+      'works.title',
+      'works.author_id',
+      'works.date',
+      db.raw('ARRAY_AGG(work_categories.category_id) as categories'),
+    ])
+    .groupBy('works.id', 'works.title')
+    .where({ 'works.date': date });
+  return works;
+}
+
+async function findByTitle(title) {
+  const works = await db('works')
+    .leftOuterJoin('work_categories', 'works.id', 'work_categories.work_id')
+    .select([
+      'works.id',
+      'works.title',
+      'works.author_id',
+      'works.date',
+      db.raw('ARRAY_AGG(work_categories.category_id) as categories'),
+    ])
+    .groupBy('works.id', 'works.title')
+    .where({ 'works.title': title })
+    .first();
+  return works;
+}
+
 async function findByQuoteId(id) {
   const quote = await db('quotes').where({ id }).first();
   const workID = quote.work_id;
@@ -89,6 +120,8 @@ function remove(id) {
 
 module.exports = {
   findAll,
+  findByDate,
+  findByTitle,
   findById,
   findByQuoteId,
   findByAuthorId,
