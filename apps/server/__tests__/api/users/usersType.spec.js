@@ -1,6 +1,6 @@
 const graphql = require('graphql');
-const knex = require('../../data/dbConfig.js');
-const { userType, collectionType } = require('../../api/types.js');
+const knex = require('../../../data/dbConfig.js');
+const { userType, collectionType } = require('../../../api/types.js');
 
 describe('User GraphQL Type', () => {
   test('should verify that the fields are correct', async (done) => {

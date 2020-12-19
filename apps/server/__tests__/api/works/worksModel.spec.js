@@ -1,5 +1,5 @@
-const Works = require('../../api/works/worksModel.js');
-const knex = require('../../data/dbConfig.js');
+const Works = require('../../../api/works/worksModel.js');
+const knex = require('../../../data/dbConfig.js');
 
 describe('works Database Operations', () => {
   beforeAll(async (done) => {

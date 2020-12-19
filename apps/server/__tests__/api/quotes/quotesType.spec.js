@@ -1,11 +1,11 @@
 const graphql = require('graphql');
-const knex = require('../../data/dbConfig.js');
+const knex = require('../../../data/dbConfig.js');
 const {
   quoteType,
   authorType,
   workType,
   categoryType,
-} = require('../../api/types.js');
+} = require('../../../api/types.js');
 
 describe('Quote GraphQL Type', () => {
   test('should verify that the fields are correct', async (done) => {

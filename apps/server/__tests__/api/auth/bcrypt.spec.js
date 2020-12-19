@@ -1,4 +1,4 @@
-const { hash, comparePassword, salt } = require('../../api/auth/bcrypt.js');
+const { hash, comparePassword, salt } = require('../../../api/auth/bcrypt.js');
 
 test('Should hash user password', async () => {
   const user = {

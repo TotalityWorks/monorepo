@@ -1,6 +1,6 @@
 const graphql = require('graphql');
-const knex = require('../../data/dbConfig.js');
-const { categoryType, workType, quoteType } = require('../../api/types.js');
+const knex = require('../../../data/dbConfig.js');
+const { categoryType, workType, quoteType } = require('../../../api/types.js');
 
 describe('Category GraphQL Type', () => {
   test('should verify that the fields are correct', async (done) => {

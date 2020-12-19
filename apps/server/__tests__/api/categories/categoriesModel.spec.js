@@ -1,5 +1,5 @@
-const Categories = require('../../api/categories/categoriesModel.js');
-const knex = require('../../data/dbConfig.js');
+const Categories = require('../../../api/categories/categoriesModel.js');
+const knex = require('../../../data/dbConfig.js');
 
 describe('Categories Database Operations', () => {
   beforeAll(async (done) => {

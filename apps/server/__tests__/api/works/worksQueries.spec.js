@@ -1,7 +1,7 @@
 const graphql = require('graphql');
-const knex = require('../../data/dbConfig.js');
-const getWork = require('../../api/works/queries/getWork.js');
-const getWorks = require('../../api/works/queries/getWorks.js');
+const knex = require('../../../data/dbConfig.js');
+const getWork = require('../../../api/works/queries/getWork.js');
+const getWorks = require('../../../api/works/queries/getWorks.js');
 
 describe('Work Queries', () => {
   beforeAll(async (done) => {

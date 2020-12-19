@@ -1,5 +1,5 @@
-const Quotes = require('../../api/quotes/quotesModel.js');
-const knex = require('../../data/dbConfig.js');
+const Quotes = require('../../../api/quotes/quotesModel.js');
+const knex = require('../../../data/dbConfig.js');
 
 describe('Quotes Database Operations', () => {
   beforeAll(async (done) => {

@@ -1,5 +1,5 @@
-const Authors = require('../../api/authors/authorsModel.js');
-const knex = require('../../data/dbConfig.js');
+const Authors = require('../../../api/authors/authorsModel.js');
+const knex = require('../../../data/dbConfig.js');
 
 describe('Authors Database Operations', () => {
   beforeAll(async (done) => {

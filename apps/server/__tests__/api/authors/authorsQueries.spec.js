@@ -1,7 +1,7 @@
 const graphql = require('graphql');
-const knex = require('../../data/dbConfig.js');
-const getAuthor = require('../../api/authors/queries/getAuthor.js');
-const getAuthors = require('../../api/authors/queries/getAuthors.js');
+const knex = require('../../../data/dbConfig.js');
+const getAuthor = require('../../../api/authors/queries/getAuthor.js');
+const getAuthors = require('../../../api/authors/queries/getAuthors.js');
 
 describe('Author Queries', () => {
   beforeAll(async (done) => {

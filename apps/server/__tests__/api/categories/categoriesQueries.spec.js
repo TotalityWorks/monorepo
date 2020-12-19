@@ -1,7 +1,7 @@
 const graphql = require('graphql');
-const knex = require('../../data/dbConfig.js');
-const getCategory = require('../../api/categories/queries/getCategory.js');
-const getCategories = require('../../api/categories/queries/getCategories.js');
+const knex = require('../../../data/dbConfig.js');
+const getCategory = require('../../../api/categories/queries/getCategory.js');
+const getCategories = require('../../../api/categories/queries/getCategories.js');
 
 describe('Category Queries', () => {
   beforeAll(async (done) => {

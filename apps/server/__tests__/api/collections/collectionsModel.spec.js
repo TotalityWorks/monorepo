@@ -1,5 +1,5 @@
-const Collections = require('../../api/collections/collectionsModel.js');
-const knex = require('../../data/dbConfig.js');
+const Collections = require('../../../api/collections/collectionsModel.js');
+const knex = require('../../../data/dbConfig.js');
 
 describe('collections Database Operations', () => {
   beforeAll(async (done) => {

@@ -1,5 +1,5 @@
-const User = require('../../api/users/usersModel.js');
-const knex = require('../../data/dbConfig.js');
+const User = require('../../../api/users/usersModel.js');
+const knex = require('../../../data/dbConfig.js');
 
 describe('User Database Operations', () => {
   beforeAll(async (done) => {
