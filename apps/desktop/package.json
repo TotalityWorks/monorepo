@@ -1,0 +1,29 @@
+{
+  "name": "desktop",
+  "version": "0.0.0",
+  "description": "The Administrative UI Dashboard in a desktop app.",
+  "author": "Moses Cosme <mosesmaxcosme@gmail.com>",
+  "homepage": "https://github.com/theSynaxis/Quotes#readme",
+  "license": "ISC",
+  "main": "lib/desktop.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theSynaxis/Quotes.git"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "bugs": {
+    "url": "https://github.com/theSynaxis/Quotes/issues"
+  },
+  "dependencies": {
+    "electron": "^11.1.0"
+  }
+}

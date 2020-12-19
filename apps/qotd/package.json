@@ -1,0 +1,26 @@
+{
+  "name": "qotd",
+  "version": "0.0.0",
+  "description": "A Quote of the Day package to be shared by the different Quote apps",
+  "author": "Moses Cosme <mosesmaxcosme@gmail.com>",
+  "homepage": "https://github.com/theSynaxis/Quotes#readme",
+  "license": "ISC",
+  "main": "lib/qotd.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theSynaxis/Quotes.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/theSynaxis/Quotes/issues"
+  }
+}
