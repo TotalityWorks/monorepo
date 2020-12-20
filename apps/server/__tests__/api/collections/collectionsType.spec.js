@@ -51,7 +51,6 @@ describe('Collection GraphQL Type', () => {
       expect(result).toEqual([{
         id: 1,
         text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
-        citation: 'John 3:16',
         author_id: 1,
         work_id: 1,
       }]);

@@ -17,7 +17,6 @@ describe('Quotes Database Operations', () => {
         text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
         author_id: 1,
         work_id: 1,
-        citation: 'John 3:16',
         categories: [
           1,
         ],
@@ -33,7 +32,6 @@ describe('Quotes Database Operations', () => {
         text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
         author_id: 1,
         work_id: 1,
-        citation: 'John 3:16',
         categories: [
           1,
         ],
@@ -49,7 +47,6 @@ describe('Quotes Database Operations', () => {
         text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
         author_id: 1,
         work_id: 1,
-        citation: 'John 3:16',
       }]);
       done();
     });
@@ -62,7 +59,6 @@ describe('Quotes Database Operations', () => {
         text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
         author_id: 1,
         work_id: 1,
-        citation: 'John 3:16',
       }]);
       done();
     });
@@ -75,7 +71,6 @@ describe('Quotes Database Operations', () => {
         text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
         author_id: 1,
         work_id: 1,
-        citation: 'John 3:16',
       }]);
       done();
     });
@@ -87,7 +82,6 @@ describe('Quotes Database Operations', () => {
         text: 'For all have sinned, and come short of the glory of God;',
         author_id: 1,
         work_id: 1,
-        citation: 'Romans 3:23',
         categories: [
           1,
         ],
@@ -98,7 +92,6 @@ describe('Quotes Database Operations', () => {
         text: 'For all have sinned, and come short of the glory of God;',
         author_id: 1,
         work_id: 1,
-        citation: 'Romans 3:23',
         categories: [
           1,
         ],
@@ -111,7 +104,6 @@ describe('Quotes Database Operations', () => {
         text: 'Lord Jesus Christ, Son of God, have mercy on me.',
         author_id: 1,
         work_id: 1,
-        citation: null,
         categories: [],
       };
       const result = await Quotes.add(quote);
@@ -120,7 +112,6 @@ describe('Quotes Database Operations', () => {
         text: 'Lord Jesus Christ, Son of God, have mercy on me.',
         author_id: 1,
         work_id: 1,
-        citation: null,
         categories: [
           null,
         ],
@@ -135,7 +126,6 @@ describe('Quotes Database Operations', () => {
         text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
         author_id: 1,
         work_id: 1,
-        citation: 'John 3:16',
         categories: [
           1,
         ],
@@ -145,7 +135,6 @@ describe('Quotes Database Operations', () => {
         text: 'For all have sinned, and come short of the glory of God;',
         author_id: 1,
         work_id: 1,
-        citation: 'Romans 3:23',
         categories: [
           1,
         ],
@@ -155,7 +144,6 @@ describe('Quotes Database Operations', () => {
         text: 'Lord Jesus Christ, Son of God, have mercy on me.',
         author_id: 1,
         work_id: 1,
-        citation: null,
         categories: [
           null,
         ],
@@ -169,7 +157,6 @@ describe('Quotes Database Operations', () => {
       const quote = {
         id: 2,
         text: 'Blessed is the man to whom the Lord will not impute sin.',
-        citation: 'Romans 4:8',
       };
       const { id } = quote;
       const result = await Quotes.update(id, quote);
@@ -178,7 +165,6 @@ describe('Quotes Database Operations', () => {
         text: 'For all have sinned, and come short of the glory of God;',
         author_id: 1,
         work_id: 1,
-        citation: 'Romans 3:23',
         categories: [
           1,
         ],
@@ -188,7 +174,6 @@ describe('Quotes Database Operations', () => {
         text: 'Blessed is the man to whom the Lord will not impute sin.',
         author_id: 1,
         work_id: 1,
-        citation: 'Romans 4:8',
         categories: [
           1,
         ],

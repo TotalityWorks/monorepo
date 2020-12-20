@@ -38,7 +38,6 @@ async function findQuotes(collectionID) {
     .select([
       'quotes.id',
       'quotes.text',
-      'quotes.citation',
       'quotes.author_id',
       'quotes.work_id',
     ])

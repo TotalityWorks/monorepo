@@ -53,7 +53,6 @@ describe('Work GraphQL Type', () => {
         text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
         author_id: 1,
         work_id: 1,
-        citation: 'John 3:16',
       }]);
       done();
     });
