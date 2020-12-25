@@ -14,12 +14,12 @@ function findById(id) {
 
 async function findByQuoteId(id) {
   const categories = await db('categories')
-    .leftOuterJoin('quote_categories', 'categories.id', 'quote_categories.category_id')
-    .select([
+    .leftOuterJoin(
+      'quote_categories',
       'categories.id',
-      'categories.name',
-      'categories.description',
-    ])
+      'quote_categories.category_id'
+    )
+    .select(['categories.id', 'categories.name', 'categories.description'])
     .groupBy('categories.id')
     .where({ 'quote_categories.quote_id': id });
   return categories;

@@ -2,14 +2,16 @@
 exports.up = function (knex) {
   return knex.schema.createTable('work_categories', (tbl) => {
     tbl.increments();
-    tbl.integer('work_id')
+    tbl
+      .integer('work_id')
       .unsigned()
       .notNullable()
       .references('id')
       .inTable('works')
       .onUpdate('CASCADE')
       .onDelete('CASCADE');
-    tbl.integer('category_id')
+    tbl
+      .integer('category_id')
       .unsigned()
       .notNullable()
       .references('id')

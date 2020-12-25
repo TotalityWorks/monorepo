@@ -7,7 +7,7 @@ const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema.js');
 
 const server = express();
-const dev = (process.env.NODE_ENV === 'development');
+const dev = process.env.NODE_ENV === 'development';
 
 server.use(cors());
 server.use(hpp());

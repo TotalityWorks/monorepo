@@ -12,13 +12,15 @@ describe('User Database Operations', () => {
   describe('GET functions', () => {
     test('should retrieve all users', async (done) => {
       const result = await User.findAll();
-      expect(result).toEqual([{
-        id: 1,
-        username: 'mosesintech',
-        email: 'moses@totalityworks.com',
-        password: 'password',
-        is_admin: true,
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          username: 'mosesintech',
+          email: 'moses@totalityworks.com',
+          password: 'password',
+          is_admin: true,
+        },
+      ]);
       done();
     });
 

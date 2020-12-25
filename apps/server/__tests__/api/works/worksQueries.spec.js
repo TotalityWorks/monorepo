@@ -30,9 +30,7 @@ describe('Work Queries', () => {
         title: 'The Holy Scriptures',
         date: '1st Century',
         author_id: 1,
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });
@@ -46,9 +44,7 @@ describe('Work Queries', () => {
         title: 'The Holy Scriptures',
         date: '1st Century',
         author_id: 1,
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });
@@ -68,15 +64,15 @@ describe('Work Queries', () => {
       const parent = null;
       const args = null;
       const result = await getWorks.resolve(parent, args);
-      expect(result).toEqual([{
-        id: 1,
-        title: 'The Holy Scriptures',
-        date: '1st Century',
-        author_id: 1,
-        categories: [
-          1,
-        ],
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          title: 'The Holy Scriptures',
+          date: '1st Century',
+          author_id: 1,
+          categories: [1],
+        },
+      ]);
       done();
     });
 
@@ -84,12 +80,14 @@ describe('Work Queries', () => {
       const parent = null;
       const args = { author_id: 1 };
       const result = await getWorks.resolve(parent, args);
-      expect(result).toEqual([{
-        id: 1,
-        title: 'The Holy Scriptures',
-        date: '1st Century',
-        author_id: 1,
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          title: 'The Holy Scriptures',
+          date: '1st Century',
+          author_id: 1,
+        },
+      ]);
       done();
     });
 
@@ -97,15 +95,15 @@ describe('Work Queries', () => {
       const parent = null;
       const args = { date: '1st Century' };
       const result = await getWorks.resolve(parent, args);
-      expect(result).toEqual([{
-        id: 1,
-        title: 'The Holy Scriptures',
-        date: '1st Century',
-        author_id: 1,
-        categories: [
-          1,
-        ],
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          title: 'The Holy Scriptures',
+          date: '1st Century',
+          author_id: 1,
+          categories: [1],
+        },
+      ]);
       done();
     });
   });

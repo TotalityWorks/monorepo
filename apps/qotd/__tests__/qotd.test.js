@@ -3,5 +3,5 @@
 const qotd = require('..');
 
 describe('qotd', () => {
-    it('needs tests');
+  it('needs tests');
 });

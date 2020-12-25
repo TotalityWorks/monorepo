@@ -14,9 +14,13 @@ describe('Quote GraphQL Type', () => {
     const name = '"Quote"';
     expect(JSON.stringify(quoteType)).toEqual(name);
     expect(fields).toHaveProperty('id');
-    expect(fields.id.type).toMatchObject(new graphql.GraphQLNonNull(graphql.GraphQLID));
+    expect(fields.id.type).toMatchObject(
+      new graphql.GraphQLNonNull(graphql.GraphQLID)
+    );
     expect(fields).toHaveProperty('text');
-    expect(fields.text.type).toMatchObject(new graphql.GraphQLNonNull(graphql.GraphQLString));
+    expect(fields.text.type).toMatchObject(
+      new graphql.GraphQLNonNull(graphql.GraphQLString)
+    );
     expect(fields).toHaveProperty('author');
     expect(fields.author.type).toMatchObject(authorType);
     expect(fields).toHaveProperty('work');
@@ -80,9 +84,7 @@ describe('Quote GraphQL Type', () => {
         title: 'The Holy Scriptures',
         author_id: 1,
         date: '1st Century',
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });
@@ -92,11 +94,13 @@ describe('Quote GraphQL Type', () => {
       const args = null;
       const fields = quoteType.getFields();
       const result = await fields.categories.resolve(parentId, args);
-      expect(result).toEqual([{
-        id: 1,
-        name: 'Theology',
-        description: 'The study of God',
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: 'Theology',
+          description: 'The study of God',
+        },
+      ]);
       done();
     });
 

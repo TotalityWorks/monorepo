@@ -2,7 +2,11 @@ const db = require('../../data/dbConfig.js');
 
 async function findAll() {
   const collections = await db('collections')
-    .leftOuterJoin('quote_collections', 'collections.id', 'quote_collections.collection_id')
+    .leftOuterJoin(
+      'quote_collections',
+      'collections.id',
+      'quote_collections.collection_id'
+    )
     .select([
       'collections.id',
       'collections.name',
@@ -17,7 +21,11 @@ async function findAll() {
 
 async function findById(id) {
   const collections = await db('collections')
-    .leftOuterJoin('quote_collections', 'collections.id', 'quote_collections.collection_id')
+    .leftOuterJoin(
+      'quote_collections',
+      'collections.id',
+      'quote_collections.collection_id'
+    )
     .select([
       'collections.id',
       'collections.name',
@@ -35,12 +43,7 @@ async function findById(id) {
 async function findQuotes(collectionID) {
   const collection = await db('quote_collections')
     .leftOuterJoin('quotes', 'quote_collections.quote_id', 'quotes.id')
-    .select([
-      'quotes.id',
-      'quotes.text',
-      'quotes.author_id',
-      'quotes.work_id',
-    ])
+    .select(['quotes.id', 'quotes.text', 'quotes.author_id', 'quotes.work_id'])
     .where({ 'quote_collections.collection_id': collectionID });
   return collection;
 }

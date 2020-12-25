@@ -3,5 +3,5 @@
 module.exports = bible;
 
 function bible() {
-    // TODO
+  // TODO
 }

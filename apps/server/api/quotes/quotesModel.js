@@ -44,12 +44,7 @@ async function findByAuthorId(id) {
 async function findByCategoryId(id) {
   const quotes = await db('quotes')
     .leftOuterJoin('quote_categories', 'quotes.id', 'quote_categories.quote_id')
-    .select([
-      'quotes.id',
-      'quotes.text',
-      'quotes.author_id',
-      'quotes.work_id',
-    ])
+    .select(['quotes.id', 'quotes.text', 'quotes.author_id', 'quotes.work_id'])
     .groupBy('quotes.id')
     .where({ 'quote_categories.category_id': id });
   return quotes;

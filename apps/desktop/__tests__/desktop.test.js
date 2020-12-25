@@ -3,5 +3,5 @@
 const desktop = require('..');
 
 describe('desktop', () => {
-    it('needs tests');
+  it('needs tests');
 });

@@ -74,13 +74,16 @@ describe('Author Queries', () => {
       const parent = null;
       const args = null;
       const result = await getAuthors.resolve(parent, args);
-      expect(result).toEqual([{
-        id: 1,
-        name: '+ICXC',
-        century: '1st',
-        location: 'Judea',
-        bio: 'The Holy Adored King Jesus Christ, the only begotten Son of God.',
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: '+ICXC',
+          century: '1st',
+          location: 'Judea',
+          bio:
+            'The Holy Adored King Jesus Christ, the only begotten Son of God.',
+        },
+      ]);
       done();
     });
 
@@ -88,13 +91,16 @@ describe('Author Queries', () => {
       const parent = null;
       const args = { century: '1st' };
       const result = await getAuthors.resolve(parent, args);
-      expect(result).toEqual([{
-        id: 1,
-        name: '+ICXC',
-        century: '1st',
-        location: 'Judea',
-        bio: 'The Holy Adored King Jesus Christ, the only begotten Son of God.',
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: '+ICXC',
+          century: '1st',
+          location: 'Judea',
+          bio:
+            'The Holy Adored King Jesus Christ, the only begotten Son of God.',
+        },
+      ]);
       done();
     });
 
@@ -102,13 +108,16 @@ describe('Author Queries', () => {
       const parent = null;
       const args = { location: 'Judea' };
       const result = await getAuthors.resolve(parent, args);
-      expect(result).toEqual([{
-        id: 1,
-        name: '+ICXC',
-        century: '1st',
-        location: 'Judea',
-        bio: 'The Holy Adored King Jesus Christ, the only begotten Son of God.',
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: '+ICXC',
+          century: '1st',
+          location: 'Judea',
+          bio:
+            'The Holy Adored King Jesus Christ, the only begotten Son of God.',
+        },
+      ]);
       done();
     });
   });

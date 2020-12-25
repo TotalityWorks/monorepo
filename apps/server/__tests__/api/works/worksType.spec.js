@@ -8,15 +8,21 @@ describe('Work GraphQL Type', () => {
     const name = '"Work"';
     expect(JSON.stringify(workType)).toEqual(name);
     expect(fields).toHaveProperty('id');
-    expect(fields.id.type).toMatchObject(new graphql.GraphQLNonNull(graphql.GraphQLID));
+    expect(fields.id.type).toMatchObject(
+      new graphql.GraphQLNonNull(graphql.GraphQLID)
+    );
     expect(fields).toHaveProperty('title');
-    expect(fields.title.type).toMatchObject(new graphql.GraphQLNonNull(graphql.GraphQLString));
+    expect(fields.title.type).toMatchObject(
+      new graphql.GraphQLNonNull(graphql.GraphQLString)
+    );
     expect(fields).toHaveProperty('date');
     expect(fields.date.type).toMatchObject(graphql.GraphQLString);
     expect(fields).toHaveProperty('author');
     expect(fields.author.type).toMatchObject(authorType);
     expect(fields).toHaveProperty('quotes');
-    expect(fields.quotes.type).toMatchObject(new graphql.GraphQLList(quoteType));
+    expect(fields.quotes.type).toMatchObject(
+      new graphql.GraphQLList(quoteType)
+    );
     done();
   });
 
@@ -48,12 +54,15 @@ describe('Work GraphQL Type', () => {
       const args = null;
       const fields = workType.getFields();
       const result = await fields.quotes.resolve(parentId, args);
-      expect(result).toEqual([{
-        id: 1,
-        text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
-        author_id: 1,
-        work_id: 1,
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          text:
+            'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
+          author_id: 1,
+          work_id: 1,
+        },
+      ]);
       done();
     });
 

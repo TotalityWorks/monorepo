@@ -12,11 +12,13 @@ describe('Categories Database Operations', () => {
   describe('GET functions', () => {
     test('Should retrieve all categories', async (done) => {
       const result = await Categories.findAll();
-      expect(result).toEqual([{
-        id: 1,
-        name: 'Theology',
-        description: 'The study of God',
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: 'Theology',
+          description: 'The study of God',
+        },
+      ]);
       done();
     });
 
@@ -45,11 +47,13 @@ describe('Categories Database Operations', () => {
     test('Should retrieve a single category: by quote ID', async (done) => {
       const id = 1;
       const result = await Categories.findByQuoteId(id);
-      expect(result).toEqual([{
-        id: 1,
-        name: 'Theology',
-        description: 'The study of God',
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: 'Theology',
+          description: 'The study of God',
+        },
+      ]);
       done();
     });
   });
@@ -75,7 +79,8 @@ describe('Categories Database Operations', () => {
       const category = {
         id: 2,
         name: 'Fasting',
-        description: 'The ascetic practice of going without food or modifying your diet.',
+        description:
+          'The ascetic practice of going without food or modifying your diet.',
       };
       const { id } = category;
       const result = await Categories.update(id, category);
@@ -86,7 +91,8 @@ describe('Categories Database Operations', () => {
       expect(result).toEqual({
         id: 2,
         name: 'Fasting',
-        description: 'The ascetic practice of going without food or modifying your diet.',
+        description:
+          'The ascetic practice of going without food or modifying your diet.',
       });
       done();
     });

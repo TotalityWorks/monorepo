@@ -12,15 +12,16 @@ describe('Quotes Database Operations', () => {
   describe('GET functions', () => {
     test('Should retrieve all quotes', async (done) => {
       const result = await Quotes.findAll();
-      expect(result).toEqual([{
-        id: 1,
-        text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
-        author_id: 1,
-        work_id: 1,
-        categories: [
-          1,
-        ],
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          text:
+            'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
+          author_id: 1,
+          work_id: 1,
+          categories: [1],
+        },
+      ]);
       done();
     });
 
@@ -29,12 +30,11 @@ describe('Quotes Database Operations', () => {
       const result = await Quotes.findById(id);
       expect(result).toEqual({
         id: 1,
-        text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
+        text:
+          'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
         author_id: 1,
         work_id: 1,
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });
@@ -42,36 +42,45 @@ describe('Quotes Database Operations', () => {
     test('Should retrieve an array of quotes: by author ID', async (done) => {
       const id = 1;
       const result = await Quotes.findByAuthorId(id);
-      expect(result).toEqual([{
-        id: 1,
-        text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
-        author_id: 1,
-        work_id: 1,
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          text:
+            'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
+          author_id: 1,
+          work_id: 1,
+        },
+      ]);
       done();
     });
 
     test('Should retrieve an array of quotes: by category ID', async (done) => {
       const id = 1;
       const result = await Quotes.findByCategoryId(id);
-      expect(result).toEqual([{
-        id: 1,
-        text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
-        author_id: 1,
-        work_id: 1,
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          text:
+            'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
+          author_id: 1,
+          work_id: 1,
+        },
+      ]);
       done();
     });
 
     test('Should retrieve an array of quotes: by work ID', async (done) => {
       const id = 1;
       const result = await Quotes.findByWorkId(id);
-      expect(result).toEqual([{
-        id: 1,
-        text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
-        author_id: 1,
-        work_id: 1,
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          text:
+            'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
+          author_id: 1,
+          work_id: 1,
+        },
+      ]);
       done();
     });
   });
@@ -82,9 +91,7 @@ describe('Quotes Database Operations', () => {
         text: 'For all have sinned, and come short of the glory of God;',
         author_id: 1,
         work_id: 1,
-        categories: [
-          1,
-        ],
+        categories: [1],
       };
       const result = await Quotes.add(quote);
       expect(result).toEqual({
@@ -92,9 +99,7 @@ describe('Quotes Database Operations', () => {
         text: 'For all have sinned, and come short of the glory of God;',
         author_id: 1,
         work_id: 1,
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });
@@ -112,42 +117,37 @@ describe('Quotes Database Operations', () => {
         text: 'Lord Jesus Christ, Son of God, have mercy on me.',
         author_id: 1,
         work_id: 1,
-        categories: [
-          null,
-        ],
+        categories: [null],
       });
       done();
     });
 
     test('Should retrieve all quotes: after adding new quote', async (done) => {
       const result = await Quotes.findAll();
-      expect(result).toEqual([{
-        id: 1,
-        text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
-        author_id: 1,
-        work_id: 1,
-        categories: [
-          1,
-        ],
-      },
-      {
-        id: 2,
-        text: 'For all have sinned, and come short of the glory of God;',
-        author_id: 1,
-        work_id: 1,
-        categories: [
-          1,
-        ],
-      },
-      {
-        id: 3,
-        text: 'Lord Jesus Christ, Son of God, have mercy on me.',
-        author_id: 1,
-        work_id: 1,
-        categories: [
-          null,
-        ],
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          text:
+            'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
+          author_id: 1,
+          work_id: 1,
+          categories: [1],
+        },
+        {
+          id: 2,
+          text: 'For all have sinned, and come short of the glory of God;',
+          author_id: 1,
+          work_id: 1,
+          categories: [1],
+        },
+        {
+          id: 3,
+          text: 'Lord Jesus Christ, Son of God, have mercy on me.',
+          author_id: 1,
+          work_id: 1,
+          categories: [null],
+        },
+      ]);
       done();
     });
   });
@@ -165,18 +165,14 @@ describe('Quotes Database Operations', () => {
         text: 'For all have sinned, and come short of the glory of God;',
         author_id: 1,
         work_id: 1,
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       expect(result).toEqual({
         id: 2,
         text: 'Blessed is the man to whom the Lord will not impute sin.',
         author_id: 1,
         work_id: 1,
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });

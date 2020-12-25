@@ -3,5 +3,5 @@
 module.exports = desktop;
 
 function desktop() {
-    // TODO
+  // TODO
 }

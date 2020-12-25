@@ -7,7 +7,9 @@ describe('Citation GraphQL Type', () => {
     const name = '"Citation"';
     expect(JSON.stringify(citationType)).toEqual(name);
     expect(fields).toHaveProperty('id');
-    expect(fields.id.type).toMatchObject(new graphql.GraphQLNonNull(graphql.GraphQLID));
+    expect(fields.id.type).toMatchObject(
+      new graphql.GraphQLNonNull(graphql.GraphQLID)
+    );
     expect(fields).toHaveProperty('publisher');
     expect(fields.publisher.type).toMatchObject(graphql.GraphQLString);
     expect(fields).toHaveProperty('publication_year');

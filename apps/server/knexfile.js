@@ -1,7 +1,6 @@
 // Update with your config settings.
 
 module.exports = {
-
   development: {
     client: 'pg',
     connection: {
@@ -61,5 +60,4 @@ module.exports = {
       tableName: 'knex_migrations',
     },
   },
-
 };

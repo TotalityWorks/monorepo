@@ -12,15 +12,15 @@ describe('collections Database Operations', () => {
   describe('GET functions', () => {
     test('Should retrieve all collections', async (done) => {
       const result = await Collections.findAll();
-      expect(result).toEqual([{
-        id: 1,
-        name: 'Favorite Quotes',
-        description: 'My favorite quotes',
-        user_id: 1,
-        quotes: [
-          1,
-        ],
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: 'Favorite Quotes',
+          description: 'My favorite quotes',
+          user_id: 1,
+          quotes: [1],
+        },
+      ]);
       done();
     });
 
@@ -32,9 +32,7 @@ describe('collections Database Operations', () => {
         name: 'Favorite Quotes',
         user_id: 1,
         description: 'My favorite quotes',
-        quotes: [
-          1,
-        ],
+        quotes: [1],
       });
       expect(result.quotes).toEqual([1]);
       done();
@@ -43,24 +41,29 @@ describe('collections Database Operations', () => {
     test('Should return an array of quotes from collection ID', async (done) => {
       const id = 1;
       const result = await Collections.findQuotes(id);
-      expect(result).toEqual([{
-        id: 1,
-        text: 'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
-        author_id: 1,
-        work_id: 1,
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          text:
+            'For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish, but have everlasting life.',
+          author_id: 1,
+          work_id: 1,
+        },
+      ]);
       done();
     });
 
     test('Should retrieve a single collection: by User ID', async (done) => {
       const userID = 1;
       const result = await Collections.findByUserId(userID);
-      expect(result).toEqual([{
-        id: 1,
-        name: 'Favorite Quotes',
-        description: 'My favorite quotes',
-        user_id: 1,
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: 'Favorite Quotes',
+          description: 'My favorite quotes',
+          user_id: 1,
+        },
+      ]);
       done();
     });
   });
@@ -77,41 +80,37 @@ describe('collections Database Operations', () => {
         name: 'Cool Quotes',
         description: null,
         user_id: 1,
-        quotes: [
-          null,
-        ],
+        quotes: [null],
       });
       done();
     });
 
     test('Should retrieve all collections: after adding new collection', async (done) => {
       const result = await Collections.findAll();
-      expect(result).toEqual([{
-        id: 1,
-        name: 'Favorite Quotes',
-        description: 'My favorite quotes',
-        user_id: 1,
-        quotes: [
-          1,
-        ],
-      },
-      {
-        id: 2,
-        name: 'Cool Quotes',
-        description: null,
-        user_id: 1,
-        quotes: [
-          null,
-        ],
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: 'Favorite Quotes',
+          description: 'My favorite quotes',
+          user_id: 1,
+          quotes: [1],
+        },
+        {
+          id: 2,
+          name: 'Cool Quotes',
+          description: null,
+          user_id: 1,
+          quotes: [null],
+        },
+      ]);
       done();
     });
 
-    test('Should retrieve all collections: by User ID, after adding new collection',
-      async (done) => {
-        const userID = 1;
-        const result = await Collections.findByUserId(userID);
-        expect(result).toEqual([{
+    test('Should retrieve all collections: by User ID, after adding new collection', async (done) => {
+      const userID = 1;
+      const result = await Collections.findByUserId(userID);
+      expect(result).toEqual([
+        {
           id: 1,
           name: 'Favorite Quotes',
           description: 'My favorite quotes',
@@ -122,9 +121,10 @@ describe('collections Database Operations', () => {
           name: 'Cool Quotes',
           description: null,
           user_id: 1,
-        }]);
-        done();
-      });
+        },
+      ]);
+      done();
+    });
   });
 
   describe('PUT functions', () => {
@@ -141,18 +141,14 @@ describe('collections Database Operations', () => {
         name: 'Cool Quotes',
         description: null,
         user_id: 1,
-        quotes: [
-          null,
-        ],
+        quotes: [null],
       });
       expect(result).toEqual({
         id: 2,
         name: 'Odd Quotes',
         description: null,
         user_id: 1,
-        quotes: [
-          null,
-        ],
+        quotes: [null],
       });
       done();
     });

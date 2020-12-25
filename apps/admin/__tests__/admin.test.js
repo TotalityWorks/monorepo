@@ -3,5 +3,5 @@
 const admin = require('..');
 
 describe('admin', () => {
-    it('needs tests');
+  it('needs tests');
 });

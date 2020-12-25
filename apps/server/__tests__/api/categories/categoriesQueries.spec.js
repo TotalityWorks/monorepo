@@ -67,11 +67,13 @@ describe('Category Queries', () => {
       const parent = null;
       const args = null;
       const result = await getCategories.resolve(parent, args);
-      expect(result).toEqual([{
-        id: 1,
-        name: 'Theology',
-        description: 'The study of God',
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: 'Theology',
+          description: 'The study of God',
+        },
+      ]);
       done();
     });
 
@@ -79,11 +81,13 @@ describe('Category Queries', () => {
       const parent = null;
       const args = { name: 'Theology' };
       const result = await getCategories.resolve(parent, args);
-      expect(result).toEqual([{
-        id: 1,
-        name: 'Theology',
-        description: 'The study of God',
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          name: 'Theology',
+          description: 'The study of God',
+        },
+      ]);
       done();
     });
   });

@@ -12,15 +12,15 @@ describe('works Database Operations', () => {
   describe('GET functions', () => {
     test('Should retrieve all works', async (done) => {
       const result = await Works.findAll();
-      expect(result).toEqual([{
-        id: 1,
-        title: 'The Holy Scriptures',
-        author_id: 1,
-        date: '1st Century',
-        categories: [
-          1,
-        ],
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          title: 'The Holy Scriptures',
+          author_id: 1,
+          date: '1st Century',
+          categories: [1],
+        },
+      ]);
       done();
     });
 
@@ -32,9 +32,7 @@ describe('works Database Operations', () => {
         title: 'The Holy Scriptures',
         author_id: 1,
         date: '1st Century',
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });
@@ -47,9 +45,7 @@ describe('works Database Operations', () => {
         title: 'The Holy Scriptures',
         author_id: 1,
         date: '1st Century',
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });
@@ -57,15 +53,15 @@ describe('works Database Operations', () => {
     test('Should retrieve an array of works: by Date', async (done) => {
       const date = '1st Century';
       const result = await Works.findByDate(date);
-      expect(result).toEqual([{
-        id: 1,
-        title: 'The Holy Scriptures',
-        author_id: 1,
-        date: '1st Century',
-        categories: [
-          1,
-        ],
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          title: 'The Holy Scriptures',
+          author_id: 1,
+          date: '1st Century',
+          categories: [1],
+        },
+      ]);
       done();
     });
 
@@ -77,9 +73,7 @@ describe('works Database Operations', () => {
         title: 'The Holy Scriptures',
         author_id: 1,
         date: '1st Century',
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });
@@ -90,9 +84,7 @@ describe('works Database Operations', () => {
       const work = {
         title: 'The New Testament',
         author_id: 1,
-        categories: [
-          1,
-        ],
+        categories: [1],
       };
       const result = await Works.add(work);
       expect(result).toEqual({
@@ -100,9 +92,7 @@ describe('works Database Operations', () => {
         title: 'The New Testament',
         author_id: 1,
         date: null,
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });
@@ -119,9 +109,7 @@ describe('works Database Operations', () => {
         title: 'The Gospels',
         author_id: 1,
         date: null,
-        categories: [
-          null,
-        ],
+        categories: [null],
       });
       done();
     });
@@ -129,74 +117,74 @@ describe('works Database Operations', () => {
     test('Should find all works: by author ID', async (done) => {
       const id = 1;
       const result = await Works.findByAuthorId(id);
-      expect(result).toEqual([{
-        id: 1,
-        title: 'The Holy Scriptures',
-        author_id: 1,
-        date: '1st Century',
-      },
-      {
-        id: 2,
-        title: 'The New Testament',
-        author_id: 1,
-        date: null,
-      },
-      {
-        id: 3,
-        title: 'The Gospels',
-        author_id: 1,
-        date: null,
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          title: 'The Holy Scriptures',
+          author_id: 1,
+          date: '1st Century',
+        },
+        {
+          id: 2,
+          title: 'The New Testament',
+          author_id: 1,
+          date: null,
+        },
+        {
+          id: 3,
+          title: 'The Gospels',
+          author_id: 1,
+          date: null,
+        },
+      ]);
       done();
     });
 
     test('Should find all works: by category ID', async (done) => {
       const id = 1;
       const result = await Works.findByCategoryId(id);
-      expect(result).toEqual([{
-        id: 1,
-        title: 'The Holy Scriptures',
-        author_id: 1,
-        date: '1st Century',
-      },
-      {
-        id: 2,
-        title: 'The New Testament',
-        author_id: 1,
-        date: null,
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          title: 'The Holy Scriptures',
+          author_id: 1,
+          date: '1st Century',
+        },
+        {
+          id: 2,
+          title: 'The New Testament',
+          author_id: 1,
+          date: null,
+        },
+      ]);
       done();
     });
 
     test('Should retrieve all works: after adding new work', async (done) => {
       const result = await Works.findAll();
-      expect(result).toEqual([{
-        id: 1,
-        title: 'The Holy Scriptures',
-        author_id: 1,
-        date: '1st Century',
-        categories: [
-          1,
-        ],
-      },
-      {
-        id: 2,
-        title: 'The New Testament',
-        author_id: 1,
-        date: null,
-        categories: [
-          1,
-        ],
-      },
-      {
-        id: 3,
-        title: 'The Gospels',
-        author_id: 1,
-        date: null,
-        categories: [
-          null,
-        ],
-      }]);
+      expect(result).toEqual([
+        {
+          id: 1,
+          title: 'The Holy Scriptures',
+          author_id: 1,
+          date: '1st Century',
+          categories: [1],
+        },
+        {
+          id: 2,
+          title: 'The New Testament',
+          author_id: 1,
+          date: null,
+          categories: [1],
+        },
+        {
+          id: 3,
+          title: 'The Gospels',
+          author_id: 1,
+          date: null,
+          categories: [null],
+        },
+      ]);
       done();
     });
   });
@@ -215,18 +203,14 @@ describe('works Database Operations', () => {
         title: 'The New Testament',
         author_id: 1,
         date: null,
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       expect(result).toEqual({
         id: 2,
         title: 'The Old Testament',
         author_id: 1,
         date: null,
-        categories: [
-          1,
-        ],
+        categories: [1],
       });
       done();
     });
