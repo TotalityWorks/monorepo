@@ -10,6 +10,7 @@ const {
 const Author = require('./authors/authorsModel.js');
 const Work = require('./works/worksModel.js');
 const Quote = require('./quotes/quotesModel.js');
+const Citation = require('./citations/citationsModel.js');
 const User = require('./users/usersModel.js');
 const Categories = require('./categories/categoriesModel.js');
 const Collection = require('./collections/collectionsModel.js');
@@ -84,7 +85,12 @@ const quoteType = new GraphQLObjectType({
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLID) },
     text: { type: new GraphQLNonNull(GraphQLString) },
-    citation: { type: new GraphQLNonNull(GraphQLString) },
+    citation: {
+      type: citationType,
+      resolve(parent) {
+        return Citation.findByQuoteId(parent.id);
+      },
+    },
     author: {
       type: authorType,
       resolve(parent) {
@@ -103,6 +109,19 @@ const quoteType = new GraphQLObjectType({
         return Categories.findByQuoteId(parent.id);
       },
     },
+  }),
+});
+
+const citationType = new GraphQLObjectType({
+  name: 'Citation',
+  fields: () => ({
+    id: { type: new GraphQLNonNull(GraphQLID) },
+    publisher: { type: GraphQLString },
+    publication_year: { type: GraphQLString },
+    city: { type: GraphQLString },
+    pages_start: { type: GraphQLString },
+    pages_end: { type: GraphQLString },
+    pg_pl: { type: GraphQLString },
   }),
 });
 
@@ -149,6 +168,7 @@ module.exports = {
   categoryType,
   workType,
   quoteType,
+  citationType,
   userType,
   collectionType,
 };
