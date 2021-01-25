@@ -31,7 +31,7 @@
     "graphql-depth-limit": "^1.1.0",
     "graphql-middleware": "^4.0.2",
     "graphql-shield": "^7.4.3",
-    "helmet": "^4.2.0",
+    "helmet": "^4.3.1",
     "hpp": "^0.2.3",
     "knex": "^0.21.13",
     "pg": "^8.5.1",
