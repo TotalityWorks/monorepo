@@ -33,7 +33,7 @@
     "graphql-shield": "^7.4.3",
     "helmet": "^4.2.0",
     "hpp": "^0.2.3",
-    "knex": "^0.21.13",
+    "knex": "^0.21.15",
     "pg": "^8.5.1",
     "rate-limiter-flexible": "^2.1.14"
   },
