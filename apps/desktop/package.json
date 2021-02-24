@@ -24,6 +24,6 @@
     "url": "https://github.com/theSynaxis/Quotes/issues"
   },
   "dependencies": {
-    "electron": "^11.1.0"
+    "electron": "^11.2.2"
   }
 }
